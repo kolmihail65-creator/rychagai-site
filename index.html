@@ -99,14 +99,6 @@ ym(113741193,"init",{ssr:true,webvisor:true,clickmap:true,referrer:document.refe
     "@type": "Offer",
     "itemOffered": {
      "@type": "Service",
-     "name": "Создание сайта",
-     "url": "https://rychagai.ru/sozdanie-sajta/"
-    }
-   },
-   {
-    "@type": "Offer",
-    "itemOffered": {
-     "@type": "Service",
      "name": "Яндекс Карты, 2ГИС и SEO",
      "url": "https://rychagai.ru/prodvizhenie-na-yandeks-kartah/"
     }
@@ -123,8 +115,8 @@ ym(113741193,"init",{ssr:true,webvisor:true,clickmap:true,referrer:document.refe
     "@type": "Offer",
     "itemOffered": {
      "@type": "Service",
-     "name": "Обучение нейросетям",
-     "url": "https://rychagai.ru/obuchenie-nejrosetyam/"
+     "name": "Создание сайта",
+     "url": "https://rychagai.ru/sozdanie-sajta/"
     }
    },
    {
@@ -133,6 +125,38 @@ ym(113741193,"init",{ssr:true,webvisor:true,clickmap:true,referrer:document.refe
      "@type": "Service",
      "name": "Чат-боты и автоматизация",
      "url": "https://rychagai.ru/chat-boty-dlya-biznesa/"
+    }
+   },
+   {
+    "@type": "Offer",
+    "itemOffered": {
+     "@type": "Service",
+     "name": "Глубокая автоматизация процессов",
+     "url": "https://rychagai.ru/glubokaya-avtomatizaciya/"
+    }
+   },
+   {
+    "@type": "Offer",
+    "itemOffered": {
+     "@type": "Service",
+     "name": "Приложения под вашу задачу",
+     "url": "https://rychagai.ru/prilozheniya-pod-zadachu/"
+    }
+   },
+   {
+    "@type": "Offer",
+    "itemOffered": {
+     "@type": "Service",
+     "name": "Ролики о компании",
+     "url": "https://rychagai.ru/roliki-o-kompanii/"
+    }
+   },
+   {
+    "@type": "Offer",
+    "itemOffered": {
+     "@type": "Service",
+     "name": "Обучение нейросетям",
+     "url": "https://rychagai.ru/obuchenie-nejrosetyam/"
     }
    }
   ]
@@ -157,7 +181,7 @@ ym(113741193,"init",{ssr:true,webvisor:true,clickmap:true,referrer:document.refe
    "name": "Сколько стоит работа?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Час работы стоит от 1 500 ₽. Работа оплачивается по часам. До начала мы записываем в заявке, сколько часов займёт задача и какова цена часа. Часы сверх согласованных — только с вашего согласия. Время, когда программы работают сами (боты, рассылки, мониторинг), не оплачивается."
+    "text": "Есть три пакета: «Старт» — 12 000 ₽, «Сопровождение» — 7 500 ₽ в месяц, «Сопровождение + ролики» — 11 000 ₽ в месяц. Разовые задачи — от 1 500 ₽ за час. До начала мы записываем в заявке, что входит в работу, сколько часов она займёт и какова цена. Часы сверх согласованных — только с вашего согласия. Время, когда программы работают сами (боты, рассылки, мониторинг), не оплачивается."
    }
   },
   {
@@ -406,25 +430,91 @@ a{ color:inherit; }
 .accent{ color:var(--orange); }
 .paper .accent{ color:var(--accent-text); }
 
-/* первый экран: знак из точек сверху, крупный заголовок под ним; ролик-знакомство (22.10.2026) — главный продающий
-   блок: на телефоне сразу под заголовком, на ПК — справа во всю высоту экрана, знак и заголовок слева */
+/* первый экран: знак из точек сверху, крупный заголовок под ним; плитки направлений (19.11.2026, вместо ролика —
+   ролики теперь внутри разделов): на телефоне и планшете сразу под заголовком, на широком ПК — справа, знак и заголовок слева */
 .ch-hero{ min-height:100svh; display:flex; flex-direction:column; justify-content:flex-end; }
-.hero-body{ width:100%; padding-top:calc(var(--head) + 26svh); padding-bottom:var(--space-5); display:grid; gap:var(--space-3); grid-template-areas:"h1" "vid" "row"; }
+.hero-body{ width:100%; padding-top:calc(var(--head) + 26svh); padding-bottom:var(--space-5); display:grid; gap:var(--space-3); grid-template-areas:"h1" "dirs" "row"; }
 .hero-body > h1{ grid-area:h1; }
-.hero-vid{ grid-area:vid; }
+.hero-dirs{ grid-area:dirs; min-width:0; }
 @media (min-width:40em){ .hero-body{ padding-top:calc(var(--head) + 28svh); } }
-@media (min-width:64em){
+@media (min-width:80em){
   .hero-body{
-    --vidw:min(24rem, calc((100svh - var(--head) - 6rem) * 9 / 16));
+    --dirsw:min(38rem, 48vw);   /* плитка не уже 195 px — «автоматизация» на ПК в строку без переноса */
     flex:1; padding-top:calc(var(--head) + var(--space-2)); padding-bottom:var(--space-5);
-    grid-template-columns:minmax(0, 1fr) var(--vidw); grid-template-rows:1fr auto; grid-template-areas:"h1 vid" "row vid";
-    column-gap:var(--space-6); row-gap:var(--space-4);
+    grid-template-columns:minmax(0, 1fr) var(--dirsw); grid-template-rows:1fr auto; grid-template-areas:"h1 dirs" "row dirs";
+    column-gap:var(--space-4); row-gap:var(--space-4);
   }
   /* над заголовком — полоса для знака; заголовок ужат так, чтобы «на рост вашего бизнеса» влезало в колонку одной строкой */
   .hero .hero-body > h1{ margin-top:max(22svh, 8rem); align-self:end;
-    font-size:min(var(--fs-h1), calc((min(100vw, var(--wrap)) - 2 * var(--gutter) - var(--vidw) - var(--space-6)) / 15.4)); }
-  .hero .hero-vid{ width:var(--vidw); align-self:center; }
+    font-size:min(var(--fs-h1), calc((min(100vw, var(--wrap)) - 2 * var(--gutter) - var(--dirsw) - var(--space-4)) / 15.4)); }
+  .hero .hero-dirs{ width:var(--dirsw); align-self:center; }
 }
+.hero-dirs{ --k0:550ms; }   /* точки плиток собираются, когда блок уже проявился */
+.hero-dirs, .top{ --dir-fg:var(--on-field); --dir-card:var(--field-card); --dir-card-hover:rgba(40,43,50,.95); --dir-line:rgba(246,244,239,.09); --dir-accent:var(--orange); }
+.top{ --menu-bg:var(--field-bg); --menu-fg:var(--on-field); --menu-soft:var(--on-field-soft); --menu-line:rgba(246,244,239,.12); }
+@media (min-width:80em){ .menu-btn, .menu{ display:none !important; } }
+/*GEN:dirs*/
+/* плитки направлений: рисунки из точек (tools/dot-icons.py) — точки собираются при показе и бегут волной при наведении */
+.dirs-list{ list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:var(--space-1); }
+.dirs-list > li{ min-width:0; }
+.dirs-list > li:last-child:nth-child(odd){ grid-column:1 / -1; }
+@media (min-width:40em){
+  .dirs-list{ grid-template-columns:repeat(3, minmax(0, 1fr)); gap:var(--space-15); }
+  .dirs-list > li:last-child:nth-child(odd){ grid-column:auto; }
+}
+.dir{
+  position:relative; display:flex; flex-direction:column; gap:var(--space-15); height:100%; min-height:8.25rem;
+  padding:var(--space-2) .875rem; border-radius:var(--radius); text-decoration:none;
+  background:var(--dir-card); color:var(--dir-fg); box-shadow:inset 0 0 0 1px var(--dir-line);
+  transition:background-color .2s var(--ease-out), box-shadow .2s var(--ease-out), transform .12s var(--ease-out);
+}
+.dir:active{ transform:scale(.98); }
+.dir .dots{ width:3.75rem; height:3.75rem; flex:none; fill:currentColor; overflow:visible; }
+.dots .grid{ opacity:.16; }
+.dots .fig circle{ fill:var(--dir-fg); transform-box:fill-box; transform-origin:center; }
+.dots .fig .a{ fill:var(--orange); }
+.dir-t{ font:600 1rem/1.25 var(--font-display); letter-spacing:-.015em; overflow-wrap:break-word; hyphens:manual; -webkit-hyphens:manual; }
+@media (max-width:24em){ .dir-t{ font-size:.9375rem; letter-spacing:-.025em; } }   /* телефон 360 px */
+@media (min-width:80em){   /* на ПК плитки крупнее: больше рисунок; «автоматизация» на 16 px помещается в строку целиком */
+  .dir{ min-height:10.5rem; padding:1.25rem 1rem; gap:var(--space-2); }
+  .dir .dots{ width:4.5rem; height:4.5rem; }
+  .dir-v{ top:1.25rem; right:1rem; font-size:.75rem; }
+}
+.dir-v{ position:absolute; top:var(--space-2); right:.875rem; display:inline-flex; align-items:center; gap:.4em; font:700 .6875rem/1 var(--font-body); letter-spacing:.08em; text-transform:uppercase; color:var(--dir-accent); }
+.dir-v::before{ content:""; border-left:.62em solid currentColor; border-block:.37em solid transparent; }
+.dir[aria-current="page"]{ box-shadow:inset 0 0 0 2px var(--orange); }
+@media (hover:hover) and (pointer:fine){ .dir:hover{ background:var(--dir-card-hover); box-shadow:inset 0 0 0 1.5px var(--orange); } }
+@media (prefers-reduced-motion:no-preference){
+  @media (hover:hover) and (pointer:fine){ .dir:hover .fig circle{ animation:dot-wave .7s var(--ease-out) var(--d) both; } }
+  .dir:focus-visible .fig circle{ animation:dot-wave .7s var(--ease-out) var(--d) both; }
+  .dirs.wait .fig circle{ opacity:0; transform:translate(var(--x), var(--y)) scale(.4); }
+  .dirs.on .fig circle{ transition:transform .9s var(--ease-out) calc(var(--d) + var(--k, 0ms) + var(--k0, 0ms)), opacity .45s ease calc(var(--d) + var(--k, 0ms) + var(--k0, 0ms)); }
+}
+@keyframes dot-wave{ 0%, 100%{ transform:none; } 35%{ transform:scale(1.55); } }
+@media (prefers-reduced-motion:reduce){ .dir:active{ transform:none; } }
+
+/* кнопка «Меню» и панель под шапкой */
+.menu-btn{ display:inline-flex; align-items:center; gap:var(--space-1); min-height:var(--tap-min); min-width:var(--tap-min); justify-content:center; padding:0 var(--space-15); border:1.5px solid currentColor; border-radius:999px; background:transparent; color:inherit; font:600 var(--fs-s)/1 var(--font-body); cursor:pointer; }
+.menu-btn svg{ width:1.15em; height:1.15em; flex:none; fill:currentColor; }
+.menu-btn .a{ fill:var(--orange); }
+.menu-btn[aria-expanded="true"]{ background:var(--orange); border-color:var(--orange); color:var(--ink); }
+.menu-btn[aria-expanded="true"] .a{ fill:var(--ink); }
+.menu-word{ display:none; }
+@media (min-width:30em){ .menu-word{ display:inline; } }
+@media (max-width:39.99em){ .top-in{ gap:var(--space-15); } }
+.menu{ position:absolute; left:0; right:0; top:100%; max-height:calc(100svh - var(--head)); overflow-y:auto; overscroll-behavior:contain; background:var(--menu-bg); color:var(--menu-fg); box-shadow:0 24px 48px rgba(0,0,0,.35); /* taste-skill-ignore: выпадающая панель должна отделяться от страницы */ }
+.menu[hidden]{ display:none; }
+.menu-in{ padding-block:var(--space-2) var(--space-4); display:grid; gap:var(--space-2); }
+.menu-h{ font:600 var(--fs-caps)/1 var(--font-body); letter-spacing:.12em; text-transform:uppercase; color:var(--menu-soft); padding-top:var(--space-1); }
+.menu ul{ list-style:none; margin:0; padding:0; }
+.menu-dirs{ display:grid; column-gap:var(--space-4); }
+@media (min-width:40em){ .menu-dirs{ grid-template-columns:repeat(2, minmax(0, 1fr)); } }
+.menu-dirs a{ display:flex; align-items:center; gap:var(--space-15); min-height:var(--tap); text-decoration:none; font-weight:600; border-bottom:1px solid var(--menu-line); }
+.menu-dirs a::before{ content:""; flex:none; width:7px; height:7px; border-radius:50%; background:var(--orange); }
+.menu-more{ display:flex; flex-wrap:wrap; gap:0 var(--space-3); }
+.menu-more a{ display:inline-flex; align-items:center; min-height:var(--tap-min); text-decoration:none; color:var(--menu-soft); font-weight:500; }
+@media (hover:hover) and (pointer:fine){ .menu a:hover{ color:var(--orange); } }
+/*/GEN:dirs*/
 .hero h1{ font-size:var(--fs-h1); line-height:1.02; letter-spacing:-.035em; }
 .hero h1 em{ font-style:normal; color:var(--orange); }
 .lines .line{ display:block; overflow:hidden; padding-bottom:.1em; margin-bottom:-.1em; }
@@ -432,7 +522,7 @@ a{ color:inherit; }
 @media (prefers-reduced-motion:no-preference){
   .js .lines .line > span{ transform:translateY(105%); animation:line-up 1.05s var(--ease-out) forwards; animation-delay:calc(var(--i, 0) * 120ms + 350ms); }
   .js .hero-row{ opacity:0; animation:fade-up .9s var(--ease-out) .75s forwards; }
-  .js .hero-vid{ opacity:0; animation:fade-up .9s var(--ease-out) .6s forwards; }
+  .js .hero-dirs{ opacity:0; animation:fade-up .9s var(--ease-out) .6s forwards; }
 }
 @keyframes line-up{ to{ transform:none; } }
 @keyframes fade-up{ from{ opacity:0; transform:translateY(14px); } to{ opacity:1; transform:none; } }
@@ -615,6 +705,17 @@ legend{ padding:0; font:700 var(--fs-l)/1.25 var(--font-display); margin-bottom:
 /* ссылка на страницу направления */
 .lv-more{ justify-self:start; display:inline-flex; align-items:center; min-height:var(--tap-min); color:var(--on-field); font-weight:600; text-decoration:underline; text-underline-offset:5px; text-decoration-thickness:1.5px; text-decoration-color:var(--orange); }
 @media (hover:hover) and (pointer:fine){ .lv-more:hover{ color:var(--orange); } }
+/* пакеты (content/site.json → packages): строки тоном в листе договора — слева что входит, справа цена; «лучший» не выделяем */
+.packs{ list-style:none; margin:var(--space-4) 0 0; padding:0; display:grid; gap:var(--space-1); }
+.pack{ background:var(--bg-alt); border-radius:var(--radius); padding:var(--space-2) var(--space-3); display:grid; grid-template-columns:minmax(0, 1fr); gap:var(--space-05) var(--space-3); min-width:0; }
+@media (min-width:40em){
+  .pack{ grid-template-columns:minmax(0, 1fr) auto; grid-template-areas:"n p" "t p"; align-items:center; }
+  .pack-n{ grid-area:n; } .pack-p{ grid-area:p; text-align:right; } .pack-t{ grid-area:t; }
+}
+.pack-n{ font:600 var(--fs-caps)/1.2 var(--font-body); letter-spacing:.12em; text-transform:uppercase; color:var(--text); }
+.pack-p{ font:700 clamp(1.375rem, 1rem + 1vw, 1.75rem)/1.05 var(--font-display); letter-spacing:-.02em; color:var(--text); white-space:nowrap; }
+.pack-p span{ font:600 var(--fs-s)/1 var(--font-body); letter-spacing:0; color:var(--text-muted); margin-left:.3em; }
+.pack-t{ color:var(--text-muted); font-size:var(--fs-s); }
 .sheet-price{ margin-top:var(--space-4); font-size:var(--fs-lead); color:var(--text-muted); }
 .sheet-price b{ color:var(--text); font-family:var(--font-display); font-weight:700; }
 
@@ -712,7 +813,7 @@ footer{ position:relative; z-index:2; background:var(--footer); color:var(--on-f
   <span class="role">Копирайтер</span>
   <span class="role">Программист</span>
   <span class="role">Консультант</span>
-  <span class="me">Михаил + ИИ</span>
+  <span class="me">Рычаг</span>
 </div>
 
 <header class="top" data-tone="dark">
@@ -728,12 +829,50 @@ footer{ position:relative; z-index:2; background:var(--footer); color:var(--on-f
       <span><span class="brand-name">РЫЧАГ</span> <span class="brand-sub">ИИ ДЛЯ РОСТА БИЗНЕСА</span></span>
     </a>
     <nav class="top-nav" aria-label="Разделы">
-      <a class="link-press" href="#levers">Направления</a>
+      <a class="link-press" href="#napravleniya">Направления</a>
       <a class="link-press" href="#steps">Как работаем</a>
       <a class="link-press" href="#terms">Условия</a>
       <a class="link-press" href="#faq">Вопросы</a>
     </nav>
     <a class="top-phone link-press" href="tel:+79024134244"><svg aria-hidden="true"><use href="#i-phone"/></svg>+7 902 413-42-44</a>
+    <!--GEN:menu-->
+<button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Меню">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="5" r="2.2"/><circle cx="12" cy="5" r="2.2"/><circle cx="19" cy="5" r="2.2"/><circle cx="5" cy="12" r="2.2"/><circle class="a" cx="12" cy="12" r="2.6"/><circle cx="19" cy="12" r="2.2"/><circle cx="5" cy="19" r="2.2"/><circle cx="12" cy="19" r="2.2"/><circle cx="19" cy="19" r="2.2"/></svg><span class="menu-word">Меню</span>
+    </button>
+    <div class="menu" id="menu" hidden>
+      <div class="wrap menu-in">
+        <p class="menu-h">Направления</p>
+        <ul class="menu-dirs">
+          <li><a href="/audit-biznesa/">Диагностика бизнеса за 24 часа</a></li>
+          <li><a href="/prodvizhenie-na-yandeks-kartah/">Клиенты из Яндекс Карт и поиска</a></li>
+          <li><a href="/rabota-s-otzyvami/">Отзывы и репутация</a></li>
+          <li><a href="/sozdanie-sajta/">Сайт, который продаёт</a></li>
+          <li><a href="/chat-boty-dlya-biznesa/">Чат-боты для бизнеса</a></li>
+          <li><a href="/glubokaya-avtomatizaciya/">Глубокая автоматизация процессов</a></li>
+          <li><a href="/prilozheniya-pod-zadachu/">Приложения под вашу задачу</a></li>
+          <li><a href="/roliki-o-kompanii/">Ролики о компании</a></li>
+          <li><a href="/obuchenie-nejrosetyam/">Обучение нейросетям</a></li>
+        </ul>
+        <ul class="menu-more">
+          <li><a href="#steps">Как работаем</a></li>
+          <li><a href="#terms">Условия и цены</a></li>
+          <li><a href="#faq">Вопросы</a></li>
+          <li><a href="/blog/">Статьи</a></li>
+          <li><a href="#zayavka">Заявка</a></li>
+        </ul>
+      </div>
+    </div>
+    <script>
+    (function () {
+      var b = document.querySelector('.menu-btn'), m = document.getElementById('menu');
+      function set(open) { b.setAttribute('aria-expanded', open); m.hidden = !open; }
+      b.addEventListener('click', function () { set(m.hidden); });
+      m.addEventListener('click', function (e) { if (e.target.closest('a')) set(false); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !m.hidden) { set(false); b.focus(); } });
+      document.addEventListener('click', function (e) { if (!m.hidden && !e.target.closest('.top')) set(false); });
+    })();
+    </script>
+<!--/GEN:menu-->
     <a class="btn btn-main btn-s" href="#zayavka">Заявка <span class="badge" id="badge" aria-label="выбрано направлений"></span></a>
   </div>
 </header>
@@ -752,16 +891,39 @@ footer{ position:relative; z-index:2; background:var(--footer); color:var(--on-f
         <span class="line"><span style="--i:0">Вся мощь ИИ&nbsp;—</span></span>
         <span class="line"><span style="--i:1">на рост вашего <em>бизнеса</em></span></span>
       </h1>
-      <figure class="vid hero-vid" id="video">
-        <video controls playsinline preload="none" width="720" height="1280" poster="assets/video/rolik-poster.jpg"
-               aria-label="Ролик-знакомство: Михаил Кольчугин — база знаний, рабочее место с ИИ, обучение">
-          <source src="assets/video/rolik.mp4" type="video/mp4">
-        </video>
-        <figcaption>Знакомство за&nbsp;минуту&nbsp;— со&nbsp;звуком</figcaption>
-      </figure>
+      <div class="hero-dirs">
+        <!--GEN:dirs-->
+<nav class="dirs" id="napravleniya" aria-label="Направления">
+  <ul class="dirs-list">
+    <li style="--k:0ms"><a class="dir link-press" href="/audit-biznesa/"><svg class="dots" viewBox="0 0 120 120" aria-hidden="true" focusable="false"><defs><pattern id="g-diag" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="1.1"/></pattern></defs><rect class="grid" width="120" height="120" fill="url(#g-diag)"/><g class="fig"><circle cx="35" cy="5" r="3.3" style="--d:170ms;--x:-35px;--y:-6px"/><circle cx="45" cy="5" r="3.3" style="--d:144ms;--x:-14px;--y:-20px"/><circle cx="55" cy="5" r="3.3" style="--d:123ms;--x:38px;--y:6px"/><circle cx="65" cy="5" r="3.3" style="--d:108ms;--x:29px;--y:-18px"/><circle cx="75" cy="5" r="3.3" style="--d:102ms;--x:-15px;--y:22px"/><circle cx="25" cy="15" r="3.3" style="--d:183ms;--x:-21px;--y:-33px"/><circle cx="85" cy="15" r="3.3" style="--d:76ms;--x:6px;--y:-25px"/><circle cx="15" cy="25" r="3.3" style="--d:207ms;--x:25px;--y:-10px"/><circle cx="95" cy="25" r="3.3" style="--d:76ms;--x:22px;--y:31px"/><circle cx="5" cy="35" r="3.3" style="--d:238ms;--x:-11px;--y:25px"/><circle class="a" cx="75" cy="35" r="4.3" style="--d:0ms;--x:34px;--y:14px"/><circle cx="105" cy="35" r="3.3" style="--d:102ms;--x:-17px;--y:32px"/><circle cx="5" cy="45" r="3.3" style="--d:240ms;--x:37px;--y:3px"/><circle cx="55" cy="45" r="3.3" style="--d:76ms;--x:11px;--y:17px"/><circle cx="75" cy="45" r="3.3" style="--d:34ms;--x:-19px;--y:-5px"/><circle cx="105" cy="45" r="3.3" style="--d:108ms;--x:29px;--y:29px"/><circle cx="5" cy="55" r="3.3" style="--d:248ms;--x:25px;--y:-25px"/><circle cx="35" cy="55" r="3.3" style="--d:152ms;--x:-11px;--y:43px"/><circle cx="55" cy="55" r="3.3" style="--d:96ms;--x:18px;--y:-4px"/><circle cx="75" cy="55" r="3.3" style="--d:68ms;--x:-13px;--y:-23px"/><circle cx="105" cy="55" r="3.3" style="--d:123ms;--x:-37px;--y:-10px"/><circle cx="15" cy="65" r="3.3" style="--d:228ms;--x:29px;--y:-19px"/><circle cx="35" cy="65" r="3.3" style="--d:170ms;--x:32px;--y:-19px"/><circle cx="55" cy="65" r="3.3" style="--d:123ms;--x:-34px;--y:-10px"/><circle cx="75" cy="65" r="3.3" style="--d:102ms;--x:-5px;--y:-22px"/><circle cx="95" cy="65" r="3.3" style="--d:123ms;--x:-26px;--y:-34px"/><circle cx="25" cy="75" r="3.3" style="--d:218ms;--x:-21px;--y:18px"/><circle cx="85" cy="75" r="3.3" style="--d:140ms;--x:-6px;--y:38px"/><circle cx="35" cy="85" r="3.3" style="--d:218ms;--x:14px;--y:-13px"/><circle cx="45" cy="85" r="3.3" style="--d:198ms;--x:7px;--y:-23px"/><circle cx="55" cy="85" r="3.3" style="--d:183ms;--x:-10px;--y:-22px"/><circle cx="65" cy="85" r="3.3" style="--d:173ms;--x:24px;--y:16px"/><circle cx="75" cy="85" r="3.3" style="--d:170ms;--x:27px;--y:9px"/><circle cx="95" cy="85" r="3.3" style="--d:183ms;--x:19px;--y:39px"/><circle cx="95" cy="95" r="3.3" style="--d:215ms;--x:9px;--y:31px"/><circle cx="105" cy="95" r="3.3" style="--d:228ms;--x:-4px;--y:-31px"/><circle cx="105" cy="105" r="3.3" style="--d:259ms;--x:-6px;--y:18px"/><circle cx="115" cy="105" r="3.3" style="--d:274ms;--x:45px;--y:-2px"/><circle cx="115" cy="115" r="3.3" style="--d:304ms;--x:2px;--y:-22px"/></g></svg><span class="dir-t">Диагностика бизнеса за 24 часа</span><span class="dir-v"><span class="sr-only">, есть </span>видео</span></a></li>
+    <li style="--k:70ms"><a class="dir link-press" href="/prodvizhenie-na-yandeks-kartah/"><svg class="dots" viewBox="0 0 120 120" aria-hidden="true" focusable="false"><defs><pattern id="g-pin" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="1.1"/></pattern></defs><rect class="grid" width="120" height="120" fill="url(#g-pin)"/><g class="fig"><circle cx="45" cy="5" r="3.3" style="--d:129ms;--x:15px;--y:25px"/><circle cx="55" cy="5" r="3.3" style="--d:120ms;--x:29px;--y:8px"/><circle cx="65" cy="5" r="3.3" style="--d:120ms;--x:-23px;--y:-2px"/><circle cx="75" cy="5" r="3.3" style="--d:129ms;--x:-17px;--y:-10px"/><circle cx="35" cy="15" r="3.3" style="--d:120ms;--x:3px;--y:-22px"/><circle cx="85" cy="15" r="3.3" style="--d:120ms;--x:9px;--y:-38px"/><circle cx="25" cy="25" r="3.3" style="--d:129ms;--x:27px;--y:-2px"/><circle cx="95" cy="25" r="3.3" style="--d:129ms;--x:-2px;--y:23px"/><circle cx="25" cy="35" r="3.3" style="--d:120ms;--x:-19px;--y:-34px"/><circle class="a" cx="55" cy="35" r="4.3" style="--d:24ms;--x:-20px;--y:9px"/><circle class="a" cx="65" cy="35" r="4.3" style="--d:24ms;--x:15px;--y:39px"/><circle cx="95" cy="35" r="3.3" style="--d:120ms;--x:-15px;--y:14px"/><circle cx="25" cy="45" r="3.3" style="--d:120ms;--x:-25px;--y:-20px"/><circle class="a" cx="55" cy="45" r="4.3" style="--d:24ms;--x:-22px;--y:15px"/><circle class="a" cx="65" cy="45" r="4.3" style="--d:24ms;--x:-7px;--y:-20px"/><circle cx="95" cy="45" r="3.3" style="--d:120ms;--x:-40px;--y:-22px"/><circle cx="25" cy="55" r="3.3" style="--d:129ms;--x:14px;--y:36px"/><circle cx="95" cy="55" r="3.3" style="--d:129ms;--x:21px;--y:10px"/><circle cx="35" cy="65" r="3.3" style="--d:120ms;--x:-7px;--y:-37px"/><circle cx="85" cy="65" r="3.3" style="--d:120ms;--x:-38px;--y:18px"/><circle cx="45" cy="75" r="3.3" style="--d:129ms;--x:-6px;--y:-38px"/><circle cx="75" cy="75" r="3.3" style="--d:129ms;--x:-32px;--y:-30px"/><circle cx="55" cy="85" r="3.3" style="--d:154ms;--x:-17px;--y:30px"/><circle cx="65" cy="85" r="3.3" style="--d:154ms;--x:-5px;--y:38px"/><circle cx="15" cy="105" r="3.3" style="--d:269ms;--x:-29px;--y:31px"/><circle cx="105" cy="105" r="3.3" style="--d:269ms;--x:11px;--y:-44px"/><circle cx="25" cy="115" r="3.3" style="--d:281ms;--x:-8px;--y:-19px"/><circle cx="35" cy="115" r="3.3" style="--d:269ms;--x:-43px;--y:14px"/><circle cx="45" cy="115" r="3.3" style="--d:260ms;--x:7px;--y:-43px"/><circle cx="55" cy="115" r="3.3" style="--d:256ms;--x:24px;--y:5px"/><circle cx="65" cy="115" r="3.3" style="--d:256ms;--x:-1px;--y:-28px"/><circle cx="75" cy="115" r="3.3" style="--d:260ms;--x:-27px;--y:25px"/><circle cx="85" cy="115" r="3.3" style="--d:269ms;--x:-27px;--y:-8px"/><circle cx="95" cy="115" r="3.3" style="--d:281ms;--x:17px;--y:-30px"/></g></svg><span class="dir-t">Клиенты из Яндекс Карт и поиска</span><span class="dir-v"><span class="sr-only">, есть </span>видео</span></a></li>
+    <li style="--k:140ms"><a class="dir link-press" href="/rabota-s-otzyvami/"><svg class="dots" viewBox="0 0 120 120" aria-hidden="true" focusable="false"><defs><pattern id="g-star" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="1.1"/></pattern></defs><rect class="grid" width="120" height="120" fill="url(#g-star)"/><g class="fig"><circle cx="55" cy="5" r="3.3" style="--d:154ms;--x:14px;--y:38px"/><circle cx="65" cy="5" r="3.3" style="--d:154ms;--x:28px;--y:-26px"/><circle cx="55" cy="15" r="3.3" style="--d:120ms;--x:23px;--y:2px"/><circle cx="65" cy="15" r="3.3" style="--d:120ms;--x:24px;--y:18px"/><circle cx="45" cy="25" r="3.3" style="--d:99ms;--x:20px;--y:-25px"/><circle cx="55" cy="25" r="3.3" style="--d:87ms;--x:-27px;--y:32px"/><circle cx="65" cy="25" r="3.3" style="--d:87ms;--x:14px;--y:19px"/><circle cx="75" cy="25" r="3.3" style="--d:99ms;--x:-20px;--y:14px"/><circle cx="5" cy="35" r="3.3" style="--d:194ms;--x:12px;--y:-18px"/><circle cx="15" cy="35" r="3.3" style="--d:161ms;--x:-34px;--y:16px"/><circle cx="25" cy="35" r="3.3" style="--d:129ms;--x:-4px;--y:41px"/><circle cx="35" cy="35" r="3.3" style="--d:99ms;--x:17px;--y:-12px"/><circle cx="45" cy="35" r="3.3" style="--d:72ms;--x:-31px;--y:-16px"/><circle cx="55" cy="35" r="3.3" style="--d:54ms;--x:21px;--y:-23px"/><circle cx="65" cy="35" r="3.3" style="--d:54ms;--x:-22px;--y:35px"/><circle cx="75" cy="35" r="3.3" style="--d:72ms;--x:42px;--y:-9px"/><circle cx="85" cy="35" r="3.3" style="--d:99ms;--x:-18px;--y:12px"/><circle cx="95" cy="35" r="3.3" style="--d:129ms;--x:-28px;--y:19px"/><circle cx="105" cy="35" r="3.3" style="--d:161ms;--x:11px;--y:15px"/><circle cx="115" cy="35" r="3.3" style="--d:194ms;--x:-42px;--y:12px"/><circle cx="15" cy="45" r="3.3" style="--d:154ms;--x:12px;--y:13px"/><circle cx="25" cy="45" r="3.3" style="--d:120ms;--x:10px;--y:38px"/><circle cx="35" cy="45" r="3.3" style="--d:87ms;--x:-39px;--y:11px"/><circle class="a" cx="55" cy="45" r="4.3" style="--d:24ms;--x:20px;--y:-36px"/><circle class="a" cx="65" cy="45" r="4.3" style="--d:24ms;--x:-29px;--y:-12px"/><circle cx="85" cy="45" r="3.3" style="--d:87ms;--x:-24px;--y:-2px"/><circle cx="95" cy="45" r="3.3" style="--d:120ms;--x:24px;--y:34px"/><circle cx="105" cy="45" r="3.3" style="--d:154ms;--x:37px;--y:7px"/><circle cx="25" cy="55" r="3.3" style="--d:120ms;--x:-23px;--y:2px"/><circle cx="35" cy="55" r="3.3" style="--d:87ms;--x:14px;--y:-23px"/><circle class="a" cx="55" cy="55" r="4.3" style="--d:24ms;--x:-5px;--y:19px"/><circle class="a" cx="65" cy="55" r="4.3" style="--d:24ms;--x:20px;--y:32px"/><circle cx="85" cy="55" r="3.3" style="--d:87ms;--x:13px;--y:-17px"/><circle cx="95" cy="55" r="3.3" style="--d:120ms;--x:-20px;--y:4px"/><circle cx="35" cy="65" r="3.3" style="--d:99ms;--x:40px;--y:0px"/><circle cx="45" cy="65" r="3.3" style="--d:72ms;--x:-32px;--y:-9px"/><circle cx="55" cy="65" r="3.3" style="--d:54ms;--x:35px;--y:12px"/><circle cx="65" cy="65" r="3.3" style="--d:54ms;--x:7px;--y:-20px"/><circle cx="75" cy="65" r="3.3" style="--d:72ms;--x:21px;--y:26px"/><circle cx="85" cy="65" r="3.3" style="--d:99ms;--x:28px;--y:12px"/><circle cx="35" cy="75" r="3.3" style="--d:120ms;--x:-4px;--y:-26px"/><circle cx="45" cy="75" r="3.3" style="--d:99ms;--x:16px;--y:-14px"/><circle cx="55" cy="75" r="3.3" style="--d:87ms;--x:30px;--y:-23px"/><circle cx="65" cy="75" r="3.3" style="--d:87ms;--x:-24px;--y:26px"/><circle cx="75" cy="75" r="3.3" style="--d:99ms;--x:8px;--y:-31px"/><circle cx="85" cy="75" r="3.3" style="--d:120ms;--x:22px;--y:-14px"/><circle cx="25" cy="85" r="3.3" style="--d:168ms;--x:24px;--y:7px"/><circle cx="35" cy="85" r="3.3" style="--d:146ms;--x:9px;--y:37px"/><circle cx="45" cy="85" r="3.3" style="--d:129ms;--x:-26px;--y:4px"/><circle cx="75" cy="85" r="3.3" style="--d:129ms;--x:12px;--y:-28px"/><circle cx="85" cy="85" r="3.3" style="--d:146ms;--x:-27px;--y:-6px"/><circle cx="95" cy="85" r="3.3" style="--d:168ms;--x:-15px;--y:-19px"/><circle cx="25" cy="95" r="3.3" style="--d:194ms;--x:12px;--y:25px"/><circle cx="35" cy="95" r="3.3" style="--d:175ms;--x:5px;--y:-31px"/><circle cx="85" cy="95" r="3.3" style="--d:175ms;--x:-16px;--y:25px"/><circle cx="95" cy="95" r="3.3" style="--d:194ms;--x:-37px;--y:20px"/><circle cx="15" cy="105" r="3.3" style="--d:242ms;--x:16px;--y:-13px"/><circle cx="25" cy="105" r="3.3" style="--d:222ms;--x:22px;--y:4px"/><circle cx="95" cy="105" r="3.3" style="--d:222ms;--x:-11px;--y:20px"/><circle cx="105" cy="105" r="3.3" style="--d:242ms;--x:15px;--y:-23px"/><circle cx="15" cy="115" r="3.3" style="--d:269ms;--x:15px;--y:35px"/><circle cx="105" cy="115" r="3.3" style="--d:269ms;--x:13px;--y:31px"/></g></svg><span class="dir-t">Отзывы и репутация</span><span class="dir-v"><span class="sr-only">, есть </span>видео</span></a></li>
+    <li style="--k:210ms"><a class="dir link-press" href="/sozdanie-sajta/"><svg class="dots" viewBox="0 0 120 120" aria-hidden="true" focusable="false"><defs><pattern id="g-site" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="1.1"/></pattern></defs><rect class="grid" width="120" height="120" fill="url(#g-site)"/><g class="fig"><circle cx="5" cy="5" r="3.3" style="--d:76ms;--x:-1px;--y:-32px"/><circle cx="15" cy="5" r="3.3" style="--d:48ms;--x:-31px;--y:-4px"/><circle cx="25" cy="5" r="3.3" style="--d:34ms;--x:32px;--y:-20px"/><circle cx="35" cy="5" r="3.3" style="--d:48ms;--x:35px;--y:0px"/><circle cx="45" cy="5" r="3.3" style="--d:76ms;--x:-33px;--y:19px"/><circle cx="55" cy="5" r="3.3" style="--d:108ms;--x:-31px;--y:31px"/><circle cx="65" cy="5" r="3.3" style="--d:140ms;--x:18px;--y:-39px"/><circle cx="75" cy="5" r="3.3" style="--d:173ms;--x:-21px;--y:-9px"/><circle cx="85" cy="5" r="3.3" style="--d:207ms;--x:-30px;--y:26px"/><circle cx="95" cy="5" r="3.3" style="--d:240ms;--x:-6px;--y:45px"/><circle cx="105" cy="5" r="3.3" style="--d:274ms;--x:31px;--y:12px"/><circle cx="115" cy="5" r="3.3" style="--d:308ms;--x:24px;--y:1px"/><circle cx="5" cy="15" r="3.3" style="--d:68ms;--x:-19px;--y:-10px"/><circle class="a" cx="25" cy="15" r="4.3" style="--d:0ms;--x:-13px;--y:-20px"/><circle cx="45" cy="15" r="3.3" style="--d:68ms;--x:-21px;--y:-29px"/><circle cx="65" cy="15" r="3.3" style="--d:136ms;--x:-7px;--y:44px"/><circle cx="115" cy="15" r="3.3" style="--d:306ms;--x:-12px;--y:-14px"/><circle cx="5" cy="25" r="3.3" style="--d:76ms;--x:10px;--y:22px"/><circle cx="15" cy="25" r="3.3" style="--d:48ms;--x:18px;--y:-16px"/><circle cx="25" cy="25" r="3.3" style="--d:34ms;--x:-26px;--y:-2px"/><circle cx="35" cy="25" r="3.3" style="--d:48ms;--x:18px;--y:7px"/><circle cx="45" cy="25" r="3.3" style="--d:76ms;--x:1px;--y:31px"/><circle cx="55" cy="25" r="3.3" style="--d:108ms;--x:-21px;--y:0px"/><circle cx="65" cy="25" r="3.3" style="--d:140ms;--x:-34px;--y:-3px"/><circle cx="75" cy="25" r="3.3" style="--d:173ms;--x:-19px;--y:-22px"/><circle cx="85" cy="25" r="3.3" style="--d:207ms;--x:-30px;--y:34px"/><circle cx="95" cy="25" r="3.3" style="--d:240ms;--x:5px;--y:22px"/><circle cx="105" cy="25" r="3.3" style="--d:274ms;--x:42px;--y:-15px"/><circle cx="115" cy="25" r="3.3" style="--d:308ms;--x:7px;--y:45px"/><circle cx="5" cy="35" r="3.3" style="--d:96ms;--x:17px;--y:40px"/><circle cx="115" cy="35" r="3.3" style="--d:313ms;--x:21px;--y:21px"/><circle cx="5" cy="45" r="3.3" style="--d:123ms;--x:-19px;--y:-40px"/><circle cx="25" cy="45" r="3.3" style="--d:102ms;--x:6px;--y:27px"/><circle cx="35" cy="45" r="3.3" style="--d:108ms;--x:-10px;--y:19px"/><circle cx="45" cy="45" r="3.3" style="--d:123ms;--x:1px;--y:-18px"/><circle cx="55" cy="45" r="3.3" style="--d:144ms;--x:-35px;--y:-26px"/><circle cx="65" cy="45" r="3.3" style="--d:170ms;--x:35px;--y:-29px"/><circle cx="115" cy="45" r="3.3" style="--d:323ms;--x:-16px;--y:-18px"/><circle cx="5" cy="55" r="3.3" style="--d:152ms;--x:-30px;--y:18px"/><circle cx="115" cy="55" r="3.3" style="--d:335ms;--x:15px;--y:10px"/><circle cx="5" cy="65" r="3.3" style="--d:183ms;--x:-11px;--y:36px"/><circle cx="25" cy="65" r="3.3" style="--d:170ms;--x:-26px;--y:-38px"/><circle cx="35" cy="65" r="3.3" style="--d:173ms;--x:11px;--y:-17px"/><circle cx="45" cy="65" r="3.3" style="--d:183ms;--x:31px;--y:14px"/><circle cx="55" cy="65" r="3.3" style="--d:198ms;--x:-2px;--y:26px"/><circle cx="65" cy="65" r="3.3" style="--d:218ms;--x:-15px;--y:-18px"/><circle cx="75" cy="65" r="3.3" style="--d:240ms;--x:-20px;--y:-25px"/><circle cx="85" cy="65" r="3.3" style="--d:266ms;--x:-20px;--y:-16px"/><circle cx="95" cy="65" r="3.3" style="--d:292ms;--x:26px;--y:-21px"/><circle cx="115" cy="65" r="3.3" style="--d:350ms;--x:35px;--y:-21px"/><circle cx="5" cy="75" r="3.3" style="--d:215ms;--x:-22px;--y:-29px"/><circle cx="25" cy="75" r="3.3" style="--d:204ms;--x:-6px;--y:-28px"/><circle cx="35" cy="75" r="3.3" style="--d:207ms;--x:-22px;--y:25px"/><circle cx="45" cy="75" r="3.3" style="--d:215ms;--x:2px;--y:36px"/><circle cx="55" cy="75" r="3.3" style="--d:228ms;--x:33px;--y:20px"/><circle cx="65" cy="75" r="3.3" style="--d:245ms;--x:37px;--y:24px"/><circle cx="75" cy="75" r="3.3" style="--d:266ms;--x:-18px;--y:-10px"/><circle cx="115" cy="75" r="3.3" style="--d:368ms;--x:30px;--y:13px"/><circle cx="5" cy="85" r="3.3" style="--d:248ms;--x:-11px;--y:-29px"/><circle cx="115" cy="85" r="3.3" style="--d:388ms;--x:-5px;--y:-40px"/><circle cx="5" cy="95" r="3.3" style="--d:280ms;--x:16px;--y:15px"/><circle cx="25" cy="95" r="3.3" style="--d:272ms;--x:22px;--y:10px"/><circle cx="35" cy="95" r="3.3" style="--d:274ms;--x:-17px;--y:39px"/><circle cx="45" cy="95" r="3.3" style="--d:280ms;--x:11px;--y:26px"/><circle cx="75" cy="95" r="3.3" style="--d:321ms;--x:-23px;--y:37px"/><circle cx="85" cy="95" r="3.3" style="--d:340ms;--x:12px;--y:-24px"/><circle cx="95" cy="95" r="3.3" style="--d:361ms;--x:-29px;--y:26px"/><circle cx="115" cy="95" r="3.3" style="--d:409ms;--x:24px;--y:37px"/><circle cx="5" cy="105" r="3.3" style="--d:313ms;--x:-23px;--y:-20px"/><circle cx="115" cy="105" r="3.3" style="--d:433ms;--x:-29px;--y:-10px"/><circle cx="5" cy="115" r="3.3" style="--d:347ms;--x:-13px;--y:-27px"/><circle cx="15" cy="115" r="3.3" style="--d:342ms;--x:19px;--y:16px"/><circle cx="25" cy="115" r="3.3" style="--d:340ms;--x:6px;--y:-22px"/><circle cx="35" cy="115" r="3.3" style="--d:342ms;--x:38px;--y:18px"/><circle cx="45" cy="115" r="3.3" style="--d:347ms;--x:-42px;--y:-10px"/><circle cx="55" cy="115" r="3.3" style="--d:355ms;--x:7px;--y:-25px"/><circle cx="65" cy="115" r="3.3" style="--d:366ms;--x:17px;--y:-12px"/><circle cx="75" cy="115" r="3.3" style="--d:380ms;--x:11px;--y:-27px"/><circle cx="85" cy="115" r="3.3" style="--d:397ms;--x:37px;--y:9px"/><circle cx="95" cy="115" r="3.3" style="--d:415ms;--x:-32px;--y:26px"/><circle cx="105" cy="115" r="3.3" style="--d:435ms;--x:-8px;--y:-42px"/><circle cx="115" cy="115" r="3.3" style="--d:457ms;--x:-20px;--y:31px"/></g></svg><span class="dir-t">Сайт, который продаёт</span></a></li>
+    <li style="--k:280ms"><a class="dir link-press" href="/chat-boty-dlya-biznesa/"><svg class="dots" viewBox="0 0 120 120" aria-hidden="true" focusable="false"><defs><pattern id="g-chat" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="1.1"/></pattern></defs><rect class="grid" width="120" height="120" fill="url(#g-chat)"/><g class="fig"><circle cx="15" cy="5" r="3.3" style="--d:304ms;--x:-39px;--y:-12px"/><circle cx="25" cy="5" r="3.3" style="--d:274ms;--x:18px;--y:21px"/><circle cx="35" cy="5" r="3.3" style="--d:245ms;--x:-10px;--y:-19px"/><circle cx="45" cy="5" r="3.3" style="--d:218ms;--x:37px;--y:11px"/><circle cx="55" cy="5" r="3.3" style="--d:192ms;--x:-35px;--y:29px"/><circle cx="65" cy="5" r="3.3" style="--d:170ms;--x:23px;--y:29px"/><circle cx="75" cy="5" r="3.3" style="--d:152ms;--x:29px;--y:6px"/><circle cx="85" cy="5" r="3.3" style="--d:140ms;--x:3px;--y:-28px"/><circle cx="95" cy="5" r="3.3" style="--d:136ms;--x:7px;--y:29px"/><circle cx="105" cy="5" r="3.3" style="--d:140ms;--x:-10px;--y:30px"/><circle cx="5" cy="15" r="3.3" style="--d:323ms;--x:23px;--y:33px"/><circle cx="115" cy="15" r="3.3" style="--d:123ms;--x:24px;--y:15px"/><circle cx="5" cy="25" r="3.3" style="--d:313ms;--x:-24px;--y:-31px"/><circle cx="115" cy="25" r="3.3" style="--d:96ms;--x:33px;--y:-31px"/><circle cx="5" cy="35" r="3.3" style="--d:308ms;--x:-32px;--y:-7px"/><circle cx="115" cy="35" r="3.3" style="--d:76ms;--x:-25px;--y:-2px"/><circle cx="5" cy="45" r="3.3" style="--d:306ms;--x:-25px;--y:-36px"/><circle cx="35" cy="45" r="3.3" style="--d:204ms;--x:0px;--y:19px"/><circle cx="65" cy="45" r="3.3" style="--d:102ms;--x:34px;--y:-25px"/><circle class="a" cx="95" cy="45" r="4.3" style="--d:0ms;--x:42px;--y:5px"/><circle cx="115" cy="45" r="3.3" style="--d:68ms;--x:18px;--y:38px"/><circle cx="5" cy="55" r="3.3" style="--d:308ms;--x:-14px;--y:-13px"/><circle cx="115" cy="55" r="3.3" style="--d:76ms;--x:34px;--y:13px"/><circle cx="5" cy="65" r="3.3" style="--d:313ms;--x:-45px;--y:0px"/><circle cx="115" cy="65" r="3.3" style="--d:96ms;--x:-23px;--y:7px"/><circle cx="15" cy="75" r="3.3" style="--d:290ms;--x:-7px;--y:27px"/><circle cx="25" cy="75" r="3.3" style="--d:259ms;--x:-15px;--y:14px"/><circle cx="35" cy="75" r="3.3" style="--d:228ms;--x:13px;--y:21px"/><circle cx="45" cy="75" r="3.3" style="--d:198ms;--x:-12px;--y:18px"/><circle cx="65" cy="75" r="3.3" style="--d:144ms;--x:-23px;--y:39px"/><circle cx="75" cy="75" r="3.3" style="--d:123ms;--x:18px;--y:-40px"/><circle cx="85" cy="75" r="3.3" style="--d:108ms;--x:19px;--y:14px"/><circle cx="95" cy="75" r="3.3" style="--d:102ms;--x:-13px;--y:15px"/><circle cx="105" cy="75" r="3.3" style="--d:108ms;--x:-15px;--y:26px"/><circle cx="45" cy="85" r="3.3" style="--d:218ms;--x:-25px;--y:-7px"/><circle cx="65" cy="85" r="3.3" style="--d:170ms;--x:4px;--y:27px"/><circle cx="45" cy="95" r="3.3" style="--d:240ms;--x:9px;--y:-26px"/><circle cx="55" cy="95" r="3.3" style="--d:218ms;--x:-31px;--y:14px"/><circle cx="45" cy="105" r="3.3" style="--d:266ms;--x:-4px;--y:30px"/></g></svg><span class="dir-t">Чат-боты для бизнеса</span></a></li>
+    <li style="--k:350ms"><a class="dir link-press" href="/glubokaya-avtomatizaciya/"><svg class="dots" viewBox="0 0 120 120" aria-hidden="true" focusable="false"><defs><pattern id="g-gear" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="1.1"/></pattern></defs><rect class="grid" width="120" height="120" fill="url(#g-gear)"/><g class="fig"><circle cx="55" cy="5" r="3.3" style="--d:188ms;--x:24px;--y:24px"/><circle cx="65" cy="5" r="3.3" style="--d:188ms;--x:-11px;--y:40px"/><circle cx="25" cy="15" r="3.3" style="--d:194ms;--x:20px;--y:5px"/><circle cx="55" cy="15" r="3.3" style="--d:154ms;--x:-43px;--y:0px"/><circle cx="65" cy="15" r="3.3" style="--d:154ms;--x:1px;--y:-30px"/><circle cx="95" cy="15" r="3.3" style="--d:194ms;--x:6px;--y:40px"/><circle cx="15" cy="25" r="3.3" style="--d:194ms;--x:40px;--y:18px"/><circle cx="25" cy="25" r="3.3" style="--d:168ms;--x:-20px;--y:39px"/><circle cx="35" cy="25" r="3.3" style="--d:146ms;--x:-40px;--y:-14px"/><circle cx="45" cy="25" r="3.3" style="--d:129ms;--x:-36px;--y:20px"/><circle cx="55" cy="25" r="3.3" style="--d:120ms;--x:-28px;--y:5px"/><circle cx="65" cy="25" r="3.3" style="--d:120ms;--x:19px;--y:-17px"/><circle cx="75" cy="25" r="3.3" style="--d:129ms;--x:-15px;--y:10px"/><circle cx="85" cy="25" r="3.3" style="--d:146ms;--x:-13px;--y:15px"/><circle cx="95" cy="25" r="3.3" style="--d:168ms;--x:23px;--y:-30px"/><circle cx="105" cy="25" r="3.3" style="--d:194ms;--x:-34px;--y:-3px"/><circle cx="25" cy="35" r="3.3" style="--d:146ms;--x:-23px;--y:30px"/><circle cx="35" cy="35" r="3.3" style="--d:120ms;--x:25px;--y:1px"/><circle cx="45" cy="35" r="3.3" style="--d:99ms;--x:13px;--y:42px"/><circle cx="75" cy="35" r="3.3" style="--d:99ms;--x:-10px;--y:-25px"/><circle cx="85" cy="35" r="3.3" style="--d:120ms;--x:-23px;--y:-4px"/><circle cx="95" cy="35" r="3.3" style="--d:146ms;--x:18px;--y:-11px"/><circle cx="15" cy="45" r="3.3" style="--d:161ms;--x:38px;--y:17px"/><circle cx="25" cy="45" r="3.3" style="--d:129ms;--x:17px;--y:12px"/><circle cx="95" cy="45" r="3.3" style="--d:129ms;--x:-28px;--y:1px"/><circle cx="105" cy="45" r="3.3" style="--d:161ms;--x:14px;--y:-30px"/><circle cx="5" cy="55" r="3.3" style="--d:188ms;--x:14px;--y:30px"/><circle cx="15" cy="55" r="3.3" style="--d:154ms;--x:-11px;--y:26px"/><circle cx="25" cy="55" r="3.3" style="--d:120ms;--x:-32px;--y:4px"/><circle class="a" cx="55" cy="55" r="4.3" style="--d:24ms;--x:11px;--y:32px"/><circle class="a" cx="65" cy="55" r="4.3" style="--d:24ms;--x:-41px;--y:9px"/><circle cx="95" cy="55" r="3.3" style="--d:120ms;--x:29px;--y:23px"/><circle cx="105" cy="55" r="3.3" style="--d:154ms;--x:15px;--y:-13px"/><circle cx="115" cy="55" r="3.3" style="--d:188ms;--x:-28px;--y:-2px"/><circle cx="5" cy="65" r="3.3" style="--d:188ms;--x:27px;--y:9px"/><circle cx="15" cy="65" r="3.3" style="--d:154ms;--x:-16px;--y:-8px"/><circle cx="25" cy="65" r="3.3" style="--d:120ms;--x:-9px;--y:22px"/><circle class="a" cx="55" cy="65" r="4.3" style="--d:24ms;--x:3px;--y:23px"/><circle class="a" cx="65" cy="65" r="4.3" style="--d:24ms;--x:20px;--y:-2px"/><circle cx="95" cy="65" r="3.3" style="--d:120ms;--x:38px;--y:-5px"/><circle cx="105" cy="65" r="3.3" style="--d:154ms;--x:-11px;--y:-15px"/><circle cx="115" cy="65" r="3.3" style="--d:188ms;--x:23px;--y:-36px"/><circle cx="15" cy="75" r="3.3" style="--d:161ms;--x:26px;--y:-8px"/><circle cx="25" cy="75" r="3.3" style="--d:129ms;--x:34px;--y:2px"/><circle cx="95" cy="75" r="3.3" style="--d:129ms;--x:-23px;--y:21px"/><circle cx="105" cy="75" r="3.3" style="--d:161ms;--x:41px;--y:-19px"/><circle cx="25" cy="85" r="3.3" style="--d:146ms;--x:-11px;--y:22px"/><circle cx="35" cy="85" r="3.3" style="--d:120ms;--x:-5px;--y:25px"/><circle cx="45" cy="85" r="3.3" style="--d:99ms;--x:2px;--y:45px"/><circle cx="75" cy="85" r="3.3" style="--d:99ms;--x:3px;--y:-30px"/><circle cx="85" cy="85" r="3.3" style="--d:120ms;--x:28px;--y:13px"/><circle cx="95" cy="85" r="3.3" style="--d:146ms;--x:32px;--y:3px"/><circle cx="15" cy="95" r="3.3" style="--d:194ms;--x:32px;--y:-9px"/><circle cx="25" cy="95" r="3.3" style="--d:168ms;--x:38px;--y:8px"/><circle cx="35" cy="95" r="3.3" style="--d:146ms;--x:-13px;--y:23px"/><circle cx="45" cy="95" r="3.3" style="--d:129ms;--x:33px;--y:21px"/><circle cx="55" cy="95" r="3.3" style="--d:120ms;--x:22px;--y:-6px"/><circle cx="65" cy="95" r="3.3" style="--d:120ms;--x:-31px;--y:-10px"/><circle cx="75" cy="95" r="3.3" style="--d:129ms;--x:-40px;--y:-15px"/><circle cx="85" cy="95" r="3.3" style="--d:146ms;--x:23px;--y:-4px"/><circle cx="95" cy="95" r="3.3" style="--d:168ms;--x:31px;--y:-6px"/><circle cx="105" cy="95" r="3.3" style="--d:194ms;--x:15px;--y:43px"/><circle cx="25" cy="105" r="3.3" style="--d:194ms;--x:-19px;--y:-21px"/><circle cx="55" cy="105" r="3.3" style="--d:154ms;--x:-24px;--y:14px"/><circle cx="65" cy="105" r="3.3" style="--d:154ms;--x:32px;--y:-15px"/><circle cx="95" cy="105" r="3.3" style="--d:194ms;--x:3px;--y:35px"/><circle cx="55" cy="115" r="3.3" style="--d:188ms;--x:-43px;--y:-12px"/><circle cx="65" cy="115" r="3.3" style="--d:188ms;--x:-44px;--y:-12px"/></g></svg><span class="dir-t">Глубокая автомати­зация процессов</span><span class="dir-v"><span class="sr-only">, есть </span>видео</span></a></li>
+    <li style="--k:420ms"><a class="dir link-press" href="/prilozheniya-pod-zadachu/"><svg class="dots" viewBox="0 0 120 120" aria-hidden="true" focusable="false"><defs><pattern id="g-apps" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="1.1"/></pattern></defs><rect class="grid" width="120" height="120" fill="url(#g-apps)"/><g class="fig"><circle cx="5" cy="5" r="3.3" style="--d:457ms;--x:36px;--y:-24px"/><circle cx="15" cy="5" r="3.3" style="--d:433ms;--x:25px;--y:26px"/><circle cx="25" cy="5" r="3.3" style="--d:409ms;--x:-8px;--y:-19px"/><circle cx="35" cy="5" r="3.3" style="--d:388ms;--x:5px;--y:22px"/><circle cx="45" cy="5" r="3.3" style="--d:368ms;--x:39px;--y:-4px"/><circle cx="55" cy="5" r="3.3" style="--d:350ms;--x:-29px;--y:5px"/><circle cx="65" cy="5" r="3.3" style="--d:335ms;--x:17px;--y:-15px"/><circle cx="75" cy="5" r="3.3" style="--d:323ms;--x:16px;--y:16px"/><circle cx="5" cy="15" r="3.3" style="--d:435ms;--x:-19px;--y:0px"/><circle cx="75" cy="15" r="3.3" style="--d:290ms;--x:-3px;--y:23px"/><circle cx="5" cy="25" r="3.3" style="--d:415ms;--x:12px;--y:14px"/><circle cx="75" cy="25" r="3.3" style="--d:259ms;--x:6px;--y:17px"/><circle cx="95" cy="25" r="3.3" style="--d:240ms;--x:4px;--y:-25px"/><circle cx="105" cy="25" r="3.3" style="--d:238ms;--x:29px;--y:14px"/><circle cx="115" cy="25" r="3.3" style="--d:240ms;--x:-18px;--y:7px"/><circle cx="5" cy="35" r="3.3" style="--d:397ms;--x:22px;--y:17px"/><circle cx="75" cy="35" r="3.3" style="--d:228ms;--x:23px;--y:-25px"/><circle cx="95" cy="35" r="3.3" style="--d:207ms;--x:14px;--y:32px"/><circle cx="115" cy="35" r="3.3" style="--d:207ms;--x:35px;--y:-6px"/><circle cx="5" cy="45" r="3.3" style="--d:380ms;--x:40px;--y:-21px"/><circle cx="75" cy="45" r="3.3" style="--d:198ms;--x:11px;--y:-21px"/><circle cx="95" cy="45" r="3.3" style="--d:173ms;--x:21px;--y:-39px"/><circle cx="115" cy="45" r="3.3" style="--d:173ms;--x:16px;--y:-31px"/><circle cx="5" cy="55" r="3.3" style="--d:366ms;--x:-23px;--y:-30px"/><circle cx="15" cy="55" r="3.3" style="--d:335ms;--x:-6px;--y:32px"/><circle cx="25" cy="55" r="3.3" style="--d:304ms;--x:-3px;--y:41px"/><circle cx="35" cy="55" r="3.3" style="--d:274ms;--x:-22px;--y:28px"/><circle cx="45" cy="55" r="3.3" style="--d:245ms;--x:-17px;--y:12px"/><circle cx="55" cy="55" r="3.3" style="--d:218ms;--x:-14px;--y:16px"/><circle cx="65" cy="55" r="3.3" style="--d:192ms;--x:17px;--y:22px"/><circle cx="75" cy="55" r="3.3" style="--d:170ms;--x:-23px;--y:15px"/><circle cx="95" cy="55" r="3.3" style="--d:140ms;--x:16px;--y:-10px"/><circle cx="115" cy="55" r="3.3" style="--d:140ms;--x:35px;--y:2px"/><circle cx="35" cy="65" r="3.3" style="--d:259ms;--x:-38px;--y:-18px"/><circle cx="45" cy="65" r="3.3" style="--d:228ms;--x:-6px;--y:-23px"/><circle cx="95" cy="65" r="3.3" style="--d:108ms;--x:19px;--y:-1px"/><circle cx="115" cy="65" r="3.3" style="--d:108ms;--x:-24px;--y:-17px"/><circle cx="25" cy="75" r="3.3" style="--d:280ms;--x:5px;--y:27px"/><circle cx="35" cy="75" r="3.3" style="--d:248ms;--x:22px;--y:11px"/><circle cx="45" cy="75" r="3.3" style="--d:215ms;--x:-39px;--y:-23px"/><circle cx="55" cy="75" r="3.3" style="--d:183ms;--x:16px;--y:-30px"/><circle cx="95" cy="75" r="3.3" style="--d:76ms;--x:25px;--y:-31px"/><circle cx="115" cy="75" r="3.3" style="--d:76ms;--x:-41px;--y:-5px"/><circle cx="95" cy="85" r="3.3" style="--d:48ms;--x:-5px;--y:-45px"/><circle cx="115" cy="85" r="3.3" style="--d:48ms;--x:29px;--y:12px"/><circle cx="95" cy="95" r="3.3" style="--d:34ms;--x:30px;--y:-9px"/><circle class="a" cx="105" cy="95" r="4.3" style="--d:0ms;--x:24px;--y:-34px"/><circle cx="115" cy="95" r="3.3" style="--d:34ms;--x:4px;--y:25px"/><circle cx="95" cy="105" r="3.3" style="--d:48ms;--x:-44px;--y:6px"/><circle cx="105" cy="105" r="3.3" style="--d:34ms;--x:-23px;--y:32px"/><circle cx="115" cy="105" r="3.3" style="--d:48ms;--x:-43px;--y:2px"/></g></svg><span class="dir-t">Приложения под вашу задачу</span></a></li>
+    <li style="--k:490ms"><a class="dir link-press" href="/roliki-o-kompanii/"><svg class="dots" viewBox="0 0 120 120" aria-hidden="true" focusable="false"><defs><pattern id="g-play" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="1.1"/></pattern></defs><rect class="grid" width="120" height="120" fill="url(#g-play)"/><g class="fig"><circle cx="15" cy="5" r="3.3" style="--d:243ms;--x:36px;--y:-6px"/><circle cx="25" cy="5" r="3.3" style="--d:226ms;--x:-15px;--y:-29px"/><circle cx="35" cy="5" r="3.3" style="--d:214ms;--x:-29px;--y:9px"/><circle cx="45" cy="5" r="3.3" style="--d:206ms;--x:-35px;--y:-6px"/><circle cx="55" cy="5" r="3.3" style="--d:204ms;--x:-32px;--y:29px"/><circle cx="65" cy="5" r="3.3" style="--d:208ms;--x:-34px;--y:27px"/><circle cx="75" cy="5" r="3.3" style="--d:216ms;--x:-11px;--y:-38px"/><circle cx="85" cy="5" r="3.3" style="--d:230ms;--x:-19px;--y:-11px"/><circle cx="95" cy="5" r="3.3" style="--d:248ms;--x:-24px;--y:1px"/><circle cx="105" cy="5" r="3.3" style="--d:268ms;--x:25px;--y:37px"/><circle cx="5" cy="15" r="3.3" style="--d:237ms;--x:8px;--y:17px"/><circle cx="115" cy="15" r="3.3" style="--d:269ms;--x:34px;--y:-22px"/><circle cx="5" cy="25" r="3.3" style="--d:214ms;--x:-34px;--y:13px"/><circle cx="115" cy="25" r="3.3" style="--d:249ms;--x:30px;--y:-9px"/><circle cx="5" cy="35" r="3.3" style="--d:195ms;--x:41px;--y:-3px"/><circle class="a" cx="45" cy="35" r="4.3" style="--d:106ms;--x:18px;--y:16px"/><circle cx="115" cy="35" r="3.3" style="--d:232ms;--x:7px;--y:-23px"/><circle cx="5" cy="45" r="3.3" style="--d:179ms;--x:23px;--y:25px"/><circle class="a" cx="45" cy="45" r="4.3" style="--d:74ms;--x:-33px;--y:1px"/><circle class="a" cx="55" cy="45" r="4.3" style="--d:68ms;--x:6px;--y:-18px"/><circle cx="115" cy="45" r="3.3" style="--d:219ms;--x:-10px;--y:-28px"/><circle cx="5" cy="55" r="3.3" style="--d:169ms;--x:-14px;--y:38px"/><circle class="a" cx="45" cy="55" r="4.3" style="--d:45ms;--x:14px;--y:14px"/><circle class="a" cx="55" cy="55" r="4.3" style="--d:34ms;--x:-9px;--y:32px"/><circle class="a" cx="65" cy="55" r="4.3" style="--d:51ms;--x:16px;--y:26px"/><circle cx="115" cy="55" r="3.3" style="--d:211ms;--x:27px;--y:-32px"/><circle cx="5" cy="65" r="3.3" style="--d:166ms;--x:9px;--y:37px"/><circle class="a" cx="45" cy="65" r="4.3" style="--d:30ms;--x:-27px;--y:-8px"/><circle class="a" cx="55" cy="65" r="4.3" style="--d:4ms;--x:20px;--y:-22px"/><circle class="a" cx="65" cy="65" r="4.3" style="--d:38ms;--x:9px;--y:-20px"/><circle class="a" cx="75" cy="65" r="4.3" style="--d:72ms;--x:32px;--y:21px"/><circle cx="115" cy="65" r="3.3" style="--d:208ms;--x:17px;--y:38px"/><circle cx="5" cy="75" r="3.3" style="--d:169ms;--x:25px;--y:6px"/><circle class="a" cx="45" cy="75" r="4.3" style="--d:45ms;--x:-26px;--y:33px"/><circle class="a" cx="55" cy="75" r="4.3" style="--d:34ms;--x:2px;--y:-45px"/><circle class="a" cx="65" cy="75" r="4.3" style="--d:51ms;--x:34px;--y:-25px"/><circle cx="115" cy="75" r="3.3" style="--d:211ms;--x:1px;--y:37px"/><circle cx="5" cy="85" r="3.3" style="--d:179ms;--x:-18px;--y:33px"/><circle class="a" cx="45" cy="85" r="4.3" style="--d:74ms;--x:5px;--y:-22px"/><circle class="a" cx="55" cy="85" r="4.3" style="--d:68ms;--x:-35px;--y:-7px"/><circle cx="115" cy="85" r="3.3" style="--d:219ms;--x:27px;--y:-23px"/><circle cx="5" cy="95" r="3.3" style="--d:195ms;--x:17px;--y:12px"/><circle class="a" cx="45" cy="95" r="4.3" style="--d:106ms;--x:-41px;--y:17px"/><circle cx="115" cy="95" r="3.3" style="--d:232ms;--x:-22px;--y:-33px"/><circle cx="5" cy="105" r="3.3" style="--d:214ms;--x:-35px;--y:26px"/><circle cx="115" cy="105" r="3.3" style="--d:249ms;--x:15px;--y:-26px"/><circle cx="15" cy="115" r="3.3" style="--d:215ms;--x:-35px;--y:11px"/><circle cx="25" cy="115" r="3.3" style="--d:196ms;--x:13px;--y:-16px"/><circle cx="35" cy="115" r="3.3" style="--d:182ms;--x:-33px;--y:-15px"/><circle cx="45" cy="115" r="3.3" style="--d:173ms;--x:-23px;--y:-14px"/><circle cx="55" cy="115" r="3.3" style="--d:170ms;--x:-17px;--y:7px"/><circle cx="65" cy="115" r="3.3" style="--d:174ms;--x:18px;--y:-37px"/><circle cx="75" cy="115" r="3.3" style="--d:185ms;--x:30px;--y:-6px"/><circle cx="85" cy="115" r="3.3" style="--d:200ms;--x:38px;--y:18px"/><circle cx="95" cy="115" r="3.3" style="--d:220ms;--x:31px;--y:-24px"/><circle cx="105" cy="115" r="3.3" style="--d:243ms;--x:3px;--y:-39px"/></g></svg><span class="dir-t">Ролики о компании</span><span class="dir-v"><span class="sr-only">, есть </span>видео</span></a></li>
+    <li style="--k:560ms"><a class="dir link-press" href="/obuchenie-nejrosetyam/"><svg class="dots" viewBox="0 0 120 120" aria-hidden="true" focusable="false"><defs><pattern id="g-book" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="1.1"/></pattern></defs><rect class="grid" width="120" height="120" fill="url(#g-book)"/><g class="fig"><circle cx="55" cy="15" r="3.3" style="--d:340ms;--x:-8px;--y:-29px"/><circle cx="65" cy="15" r="3.3" style="--d:321ms;--x:28px;--y:-31px"/><circle cx="35" cy="25" r="3.3" style="--d:361ms;--x:14px;--y:-18px"/><circle cx="45" cy="25" r="3.3" style="--d:337ms;--x:28px;--y:12px"/><circle cx="55" cy="25" r="3.3" style="--d:313ms;--x:9px;--y:-16px"/><circle cx="65" cy="25" r="3.3" style="--d:292ms;--x:15px;--y:-13px"/><circle cx="75" cy="25" r="3.3" style="--d:274ms;--x:-6px;--y:27px"/><circle cx="85" cy="25" r="3.3" style="--d:259ms;--x:-29px;--y:-28px"/><circle cx="15" cy="35" r="3.3" style="--d:397ms;--x:-1px;--y:-28px"/><circle cx="25" cy="35" r="3.3" style="--d:368ms;--x:-14px;--y:19px"/><circle cx="35" cy="35" r="3.3" style="--d:340ms;--x:-36px;--y:-24px"/><circle cx="45" cy="35" r="3.3" style="--d:313ms;--x:-10px;--y:40px"/><circle cx="55" cy="35" r="3.3" style="--d:288ms;--x:-4px;--y:36px"/><circle cx="65" cy="35" r="3.3" style="--d:266ms;--x:3px;--y:-36px"/><circle cx="75" cy="35" r="3.3" style="--d:245ms;--x:18px;--y:12px"/><circle cx="85" cy="35" r="3.3" style="--d:228ms;--x:-42px;--y:-12px"/><circle cx="95" cy="35" r="3.3" style="--d:215ms;--x:41px;--y:11px"/><circle cx="105" cy="35" r="3.3" style="--d:207ms;--x:-15px;--y:38px"/><circle cx="5" cy="45" r="3.3" style="--d:411ms;--x:-37px;--y:-21px"/><circle cx="15" cy="45" r="3.3" style="--d:380ms;--x:-1px;--y:30px"/><circle cx="25" cy="45" r="3.3" style="--d:350ms;--x:-9px;--y:-42px"/><circle cx="35" cy="45" r="3.3" style="--d:321ms;--x:-10px;--y:-21px"/><circle cx="45" cy="45" r="3.3" style="--d:292ms;--x:-18px;--y:-1px"/><circle cx="55" cy="45" r="3.3" style="--d:266ms;--x:-1px;--y:-42px"/><circle cx="65" cy="45" r="3.3" style="--d:240ms;--x:-11px;--y:-15px"/><circle cx="75" cy="45" r="3.3" style="--d:218ms;--x:33px;--y:-8px"/><circle cx="85" cy="45" r="3.3" style="--d:198ms;--x:27px;--y:-7px"/><circle cx="95" cy="45" r="3.3" style="--d:183ms;--x:-25px;--y:-6px"/><circle cx="105" cy="45" r="3.3" style="--d:173ms;--x:-31px;--y:-15px"/><circle cx="115" cy="45" r="3.3" style="--d:170ms;--x:-33px;--y:-28px"/><circle cx="15" cy="55" r="3.3" style="--d:366ms;--x:7px;--y:-44px"/><circle cx="25" cy="55" r="3.3" style="--d:335ms;--x:32px;--y:10px"/><circle cx="35" cy="55" r="3.3" style="--d:304ms;--x:-25px;--y:6px"/><circle cx="45" cy="55" r="3.3" style="--d:274ms;--x:-42px;--y:2px"/><circle cx="55" cy="55" r="3.3" style="--d:245ms;--x:9px;--y:25px"/><circle cx="65" cy="55" r="3.3" style="--d:218ms;--x:39px;--y:-5px"/><circle cx="75" cy="55" r="3.3" style="--d:192ms;--x:-45px;--y:-4px"/><circle cx="85" cy="55" r="3.3" style="--d:170ms;--x:-14px;--y:20px"/><circle cx="95" cy="55" r="3.3" style="--d:152ms;--x:30px;--y:-18px"/><circle cx="105" cy="55" r="3.3" style="--d:140ms;--x:-26px;--y:-29px"/><circle cx="25" cy="65" r="3.3" style="--d:323ms;--x:-35px;--y:-10px"/><circle cx="45" cy="65" r="3.3" style="--d:259ms;--x:-16px;--y:-36px"/><circle cx="55" cy="65" r="3.3" style="--d:228ms;--x:-3px;--y:30px"/><circle cx="65" cy="65" r="3.3" style="--d:198ms;--x:11px;--y:-16px"/><circle cx="75" cy="65" r="3.3" style="--d:170ms;--x:38px;--y:-11px"/><circle cx="95" cy="65" r="3.3" style="--d:123ms;--x:23px;--y:-30px"/><circle cx="115" cy="65" r="3.3" style="--d:102ms;--x:44px;--y:6px"/><circle cx="25" cy="75" r="3.3" style="--d:313ms;--x:0px;--y:-39px"/><circle cx="95" cy="75" r="3.3" style="--d:96ms;--x:22px;--y:-30px"/><circle cx="115" cy="75" r="3.3" style="--d:68ms;--x:22px;--y:2px"/><circle cx="25" cy="85" r="3.3" style="--d:308ms;--x:-9px;--y:21px"/><circle cx="95" cy="85" r="3.3" style="--d:76ms;--x:2px;--y:-31px"/><circle cx="115" cy="85" r="3.3" style="--d:34ms;--x:-17px;--y:7px"/><circle cx="25" cy="95" r="3.3" style="--d:306ms;--x:27px;--y:-33px"/><circle cx="35" cy="95" r="3.3" style="--d:272ms;--x:-5px;--y:42px"/><circle cx="45" cy="95" r="3.3" style="--d:238ms;--x:-29px;--y:15px"/><circle cx="55" cy="95" r="3.3" style="--d:204ms;--x:15px;--y:-42px"/><circle cx="65" cy="95" r="3.3" style="--d:170ms;--x:21px;--y:-4px"/><circle cx="75" cy="95" r="3.3" style="--d:136ms;--x:8px;--y:-27px"/><circle cx="85" cy="95" r="3.3" style="--d:102ms;--x:28px;--y:-8px"/><circle cx="95" cy="95" r="3.3" style="--d:68ms;--x:16px;--y:37px"/><circle class="a" cx="115" cy="95" r="4.3" style="--d:0ms;--x:21px;--y:-30px"/></g></svg><span class="dir-t">Обучение нейросетям</span><span class="dir-v"><span class="sr-only">, есть </span>видео</span></a></li>
+  </ul>
+</nav>
+<script>
+(function () {
+  var d = document.currentScript.previousElementSibling;
+  if (!d || !('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  d.classList.add('wait');
+  var io = new IntersectionObserver(function (es) {
+    if (!es[0].isIntersecting) return;
+    io.disconnect();
+    requestAnimationFrame(function () { d.classList.add('on'); d.classList.remove('wait'); });
+  }, { threshold: .15 });
+  io.observe(d);
+})();
+</script>
+<!--/GEN:dirs-->
+      </div>
       <div class="hero-row">
         <div>
-          <p class="lead">Один специалист с нейросетями закрывает задачи целой команды: от диагностики и сайта до продаж, найма и новых точек. Внедрение ИИ для бизнеса Самары&nbsp;— по договору и с оплатой по часам.</p>
+          <p class="lead">Один специалист с нейросетями закрывает задачи целой команды: от диагностики и сайта до продаж, найма и новых точек. Внедрение ИИ для бизнеса Самары&nbsp;— по договору: пакетом или по часам.</p>
           <p class="who"><b>Михаил Кольчугин</b> · внедрение нейросетей в бизнес · самозанятый, Самара</p>
         </div>
         <div class="hero-cta">
@@ -770,14 +932,6 @@ footer{ position:relative; z-index:2; background:var(--footer); color:var(--on-f
         </div>
       </div>
     </div>
-    <script type="application/ld+json">
-{"@context": "https://schema.org", "@type": "VideoObject",
- "name": "Михаил Кольчугин: база знаний, рабочее место с ИИ и обучение Claude Code",
- "description": "Два года собираю базу знаний — больше 800 статей практиков ИИ. Из неё собираю рабочее место с Claude Code и скиллами под задачи бизнеса и учу простым языком. Онлайн и в Самаре, от 1 500 ₽ за занятие, знакомство бесплатно.",
- "thumbnailUrl": "https://rychagai.ru/assets/video/rolik-poster.jpg",
- "contentUrl": "https://rychagai.ru/assets/video/rolik.mp4",
- "uploadDate": "2026-10-22T20:00:00+04:00", "duration": "PT1M5S", "inLanguage": "ru"}
-    </script>
   </section>
 
   <!-- 1. Целая команда в одном -->
@@ -788,7 +942,7 @@ footer{ position:relative; z-index:2; background:var(--footer); color:var(--on-f
           <h2 id="team-h">Целая команда в&nbsp;одном договоре</h2>
           <p class="lead">Маркетолог, аналитик, SEO-специалист, дизайнер, копирайтер, программист и бизнес-консультант. Раньше это семь зарплат или счёт агентства.</p>
           <p class="soft">Теперь их работу делают нейросети, а я ставлю задачи, проверяю каждый результат и отвечаю за него.</p>
-          <p class="strong">Без штата и подписок: вы платите только за отработанные часы.</p>
+          <p class="strong">Без штата и подписок: пакет с понятной ценой или оплата только за отработанные часы.</p>
         </div>
       </div>
     </div></div>
@@ -1008,7 +1162,7 @@ footer{ position:relative; z-index:2; background:var(--footer); color:var(--on-f
         <p class="sheet-title">Договор на услуги по развитию бизнеса с помощью искусственного интеллекта</p>
         <p class="sheet-meta">Исполнитель — Михаил Кольчугин, самозанятый · г. Самара</p>
         <ol class="clauses" id="clauses">
-          <li><span class="cl">2.1</span><p>Вы платите <mark>только за часы работы</mark>. Число часов и цену часа записываем до начала.</p></li>
+          <li><span class="cl">2.1</span><p>Вы платите <mark>за пакет или только за часы работы</mark>. Что входит, число часов и цену записываем до начала.</p></li>
           <li><span class="cl">3.2</span><p>Часы сверх согласованных — <mark>только с вашего согласия</mark>. Время, когда программы работают сами (боты, рассылки, мониторинг), <mark>не оплачивается</mark>.</p></li>
           <li><span class="cl">3.3</span><p>Всё, что сделали нейросети, <mark>проверяю сам и отвечаю за это</mark>, как за свою работу. От вашего имени публикую только согласованное.</p></li>
           <li><span class="cl">5.1</span><p>Сайт, тексты, видео, боты, отчёты и аккаунты <mark>переходят вам</mark>, включая исключительные права.</p></li>
@@ -1016,7 +1170,12 @@ footer{ position:relative; z-index:2; background:var(--footer); color:var(--on-f
           <li><span class="cl">4.2</span><p>На каждую оплату — <mark>чек из «Мой налог»</mark>. НДФЛ и взносы за меня вы не платите.</p></li>
         </ol>
         <!--GEN:price-->
-<p class="sheet-price">Цена часа — <b>от 1 500 ₽</b>. Сколько часов займёт задача, считаю после диагностики и записываю в заявку.</p>
+<ul class="packs" aria-label="Пакеты">
+  <li class="pack"><p class="pack-n">Старт</p><p class="pack-p">12 000 ₽</p><p class="pack-t">Разбор: как привлечь дополнительный поток клиентов и где они теряются. Исправляем от 5 до 10 недочётов, автоматизируем один процесс и снимаем рекламный ролик о ваших преимуществах.</p></li>
+  <li class="pack"><p class="pack-n">Сопровождение</p><p class="pack-p">7 500 ₽<span>/ мес</span></p><p class="pack-t">Каждую неделю — одно направление на ваш выбор: карточки, отзывы, сайт, соцсети, реклама, автоматизация.</p></li>
+  <li class="pack"><p class="pack-n">Сопровождение + ролики</p><p class="pack-p">11 000 ₽<span>/ мес</span></p><p class="pack-t">Всё из сопровождения и 4 ролика в месяц о компании и её преимуществах.</p></li>
+</ul>
+<p class="sheet-price">Разовые задачи — <b>от 1 500 ₽</b> за час. Сколько часов займёт задача, считаю после диагностики и записываю в заявку.</p>
 <!--/GEN:price-->
         <div class="sheet-foot">
           <p><b>Цели в цифрах</b> записываем в заявке как ориентир и каждый месяц сверяем «до» и «после».</p>
@@ -1051,8 +1210,8 @@ footer{ position:relative; z-index:2; background:var(--footer); color:var(--on-f
         <details class="qa">
           <summary>Сколько стоит работа?</summary>
           <div class="ans"><p><!--GEN:faqprice-->
-Час работы стоит от 1 500 ₽. 
-<!--/GEN:faqprice-->Работа оплачивается по часам. До начала мы записываем в заявке, сколько часов займёт задача и какова цена часа. Часы сверх согласованных&nbsp;— только с вашего согласия. Время, когда программы работают сами (боты, рассылки, мониторинг), не оплачивается.</p></div>
+Есть три пакета: «Старт» — 12 000 ₽, «Сопровождение» — 7 500 ₽ в месяц, «Сопровождение + ролики» — 11 000 ₽ в месяц. Разовые задачи — от 1 500 ₽ за час. 
+<!--/GEN:faqprice-->До начала мы записываем в заявке, что входит в работу, сколько часов она займёт и какова цена. Часы сверх согласованных&nbsp;— только с вашего согласия. Время, когда программы работают сами (боты, рассылки, мониторинг), не оплачивается.</p></div>
         </details>
         <details class="qa">
           <summary>Нужно ли нам покупать подписки на нейросети?</summary>
@@ -1176,11 +1335,14 @@ footer{ position:relative; z-index:2; background:var(--footer); color:var(--on-f
         <ul>
           <li><a href="/">Внедрение ИИ в бизнес</a></li>
           <li><a href="/audit-biznesa/">Диагностика бизнеса</a></li>
-          <li><a href="/sozdanie-sajta/">Создание сайта</a></li>
           <li><a href="/prodvizhenie-na-yandeks-kartah/">Яндекс Карты, 2ГИС и SEO</a></li>
           <li><a href="/rabota-s-otzyvami/">Работа с отзывами</a></li>
-          <li><a href="/obuchenie-nejrosetyam/">Обучение нейросетям</a></li>
+          <li><a href="/sozdanie-sajta/">Создание сайта</a></li>
           <li><a href="/chat-boty-dlya-biznesa/">Чат-боты и автоматизация</a></li>
+          <li><a href="/glubokaya-avtomatizaciya/">Глубокая автоматизация процессов</a></li>
+          <li><a href="/prilozheniya-pod-zadachu/">Приложения под вашу задачу</a></li>
+          <li><a href="/roliki-o-kompanii/">Ролики о компании</a></li>
+          <li><a href="/obuchenie-nejrosetyam/">Обучение нейросетям</a></li>
         </ul>
       </nav>
       <nav aria-label="Ещё">
@@ -1259,8 +1421,8 @@ footer{ position:relative; z-index:2; background:var(--footer); color:var(--on-f
     const W = vw >= 1024, t = topOf(scene);
     if (scene === 'lever') {                // первый экран: знак в полосе над заголовком
       const b = band(scene, t, false), h1 = (textEls.lever || $(textOf.lever)).getBoundingClientRect();
-      const vid = $('.hero-vid'), v = vid && vid.getBoundingClientRect();
-      // на ПК справа стоит ролик — знак по левому краю текста, до ролика; на телефоне ролик под заголовком — знак во всю ширину
+      const vid = $('.hero-dirs'), v = vid && vid.getBoundingClientRect();
+      // на широком ПК справа стоят плитки направлений — знак по левому краю текста, до плиток; на телефоне плитки под заголовком — знак во всю ширину
       if (v && v.left > h1.left + 200) return { x: h1.left, y: b.y, w: Math.max(160, v.left - 48 - h1.left), h: b.h, align: 'left' };
       return { x: vw * .05, y: b.y, w: vw * .9, h: b.h };
     }
