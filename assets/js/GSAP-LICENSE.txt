@@ -1,0 +1,5 @@
+GSAP 3.13.0 и ScrollTrigger 3.13.0 (GreenSock, https://gsap.com)
+Скачаны 17.10.2026 с https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ без изменений.
+Лицензия: GSAP Standard "No Charge" License — https://gsap.com/standard-license
+(с версии 3.13 бесплатна, в том числе для коммерческих сайтов; запрещено только использовать GSAP
+в инструменте, который конкурирует с визуальным конструктором Webflow).
