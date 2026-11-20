@@ -17,7 +17,7 @@
   --sheet:#FFFDF8;
   --text:#1C1E23;
   --text-muted:#5C5F66;
-  --accent-text:#C9471B;
+  --accent-text:#B83F17;   /* оранжевый текст на светлом: контраст 4,6–5,5 : 1 на всех фонах (было #C9471B — 3,9–4,3) */
   --dark:#15171B;
   --on-dark:#F6F4EF;
   --on-dark-soft:#D9D7D0;
@@ -327,6 +327,7 @@ footer{ background:var(--footer); color:var(--on-dark-muted); font-size:var(--fs
 /* пустые разделы «скоро»: компактные плитки без рисунков под основными */
 .dirs-soon{ margin-top:var(--space-2); }
 .hero-soon .dirs-soon{ margin-top:0; }
+.hero-soon .dirs-soon + .dirs-soon{ margin-top:var(--space-2); }
 .dirs-soon-h{ margin:0 0 var(--space-1); font:700 .6875rem/1 var(--font-body); letter-spacing:.12em; text-transform:uppercase; color:var(--dir-fg); }
 .dirs-soon-list{ list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:var(--space-1); }
 @media (min-width:40em){ .dirs-soon-list{ display:flex; flex-wrap:wrap; } }

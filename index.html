@@ -54,7 +54,7 @@ ym(113741193,"init",{ssr:true,webvisor:true,clickmap:true,referrer:document.refe
  "url": "https://rychagai.ru/",
  "logo": "https://rychagai.ru/icon-512.png",
  "image": "https://rychagai.ru/og.png",
- "description": "Внедрение искусственного интеллекта в малый и средний бизнес Самары: диагностика, мировой опыт, бизнес-модель, сайт и SEO, Яндекс Карты и отзывы, соцсети, реклама, продажи, обучение команды, ИИ-агенты и чат-боты, автоматизация бизнес-процессов, масштабирование.",
+ "description": "Внедрение искусственного интеллекта в бизнес: диагностика, мировой опыт, бизнес-модель, сайт и SEO, Яндекс Карты и отзывы, ВКонтакте, Авито, маркетплейсы, Яндекс Директ, ИИ-администратор и ИИ для продаж, обучение команды, ИИ-агенты и чат-боты, автоматизация бизнес-процессов, масштабирование.",
  "telephone": "+7 902 413-42-44",
  "areaServed": [
   {
@@ -64,6 +64,18 @@ ym(113741193,"init",{ssr:true,webvisor:true,clickmap:true,referrer:document.refe
   {
    "@type": "AdministrativeArea",
    "name": "Самарская область"
+  },
+  {
+   "@type": "City",
+   "name": "Москва"
+  },
+  {
+   "@type": "Country",
+   "name": "Россия"
+  },
+  {
+   "@type": "Country",
+   "name": "Беларусь"
   }
  ],
  "address": {
@@ -158,6 +170,62 @@ ym(113741193,"init",{ssr:true,webvisor:true,clickmap:true,referrer:document.refe
      "name": "Обучение нейросетям",
      "url": "https://rychagai.ru/obuchenie-nejrosetyam/"
     }
+   },
+   {
+    "@type": "Offer",
+    "itemOffered": {
+     "@type": "Service",
+     "name": "ИИ-администратор",
+     "url": "https://rychagai.ru/ii-administrator/"
+    }
+   },
+   {
+    "@type": "Offer",
+    "itemOffered": {
+     "@type": "Service",
+     "name": "ИИ для отдела продаж",
+     "url": "https://rychagai.ru/ii-dlya-prodazh/"
+    }
+   },
+   {
+    "@type": "Offer",
+    "itemOffered": {
+     "@type": "Service",
+     "name": "SEO-продвижение сайта",
+     "url": "https://rychagai.ru/seo-prodvizhenie-sajta/"
+    }
+   },
+   {
+    "@type": "Offer",
+    "itemOffered": {
+     "@type": "Service",
+     "name": "Настройка Яндекс Директ",
+     "url": "https://rychagai.ru/nastrojka-yandeks-direkt/"
+    }
+   },
+   {
+    "@type": "Offer",
+    "itemOffered": {
+     "@type": "Service",
+     "name": "Продвижение ВКонтакте",
+     "url": "https://rychagai.ru/prodvizhenie-vkontakte/"
+    }
+   },
+   {
+    "@type": "Offer",
+    "itemOffered": {
+     "@type": "Service",
+     "name": "Авитолог",
+     "url": "https://rychagai.ru/avitolog/"
+    }
+   },
+   {
+    "@type": "Offer",
+    "itemOffered": {
+     "@type": "Service",
+     "name": "Карточки для маркетплейсов",
+     "url": "https://rychagai.ru/kartochki-dlya-marketplejsov/"
+    }
    }
   ]
  }
@@ -205,7 +273,7 @@ ym(113741193,"init",{ssr:true,webvisor:true,clickmap:true,referrer:document.refe
    "name": "Вы работаете только в Самаре?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Встречи, визиты «тайного покупателя» и съёмка — в Самаре и Самарской области. Всё остальное делается онлайн, поэтому работаю с бизнесом из любого города России."
+    "text": "Встречи, визиты «тайного покупателя» и съёмка — в Самаре и Самарской области. Всё остальное делается онлайн, поэтому работаю с бизнесом по всей России, больше всего с Самарой и Москвой, и с Беларусью."
    }
   },
   {
@@ -269,7 +337,7 @@ ym(113741193,"init",{ssr:true,webvisor:true,clickmap:true,referrer:document.refe
   --chip:#E6E2D8;
   --text:#1C1E23;
   --text-muted:#5C5F66;
-  --accent-text:#C9471B;   /* оранжевый текст на светлом: #EA5A2A там только ~3:1 */
+  --accent-text:#B83F17;   /* оранжевый текст на светлом: #EA5A2A там только ~3:1, #C9471B — 4,3:1, нужно от 4,5 */
   --line:#7E8188;
   --mark:rgba(234,90,42,.3);
   --footer:#101114;
@@ -500,6 +568,7 @@ a{ color:inherit; }
 /* пустые разделы «скоро»: компактные плитки без рисунков под основными */
 .dirs-soon{ margin-top:var(--space-2); }
 .hero-soon .dirs-soon{ margin-top:0; }
+.hero-soon .dirs-soon + .dirs-soon{ margin-top:var(--space-2); }
 .dirs-soon-h{ margin:0 0 var(--space-1); font:700 .6875rem/1 var(--font-body); letter-spacing:.12em; text-transform:uppercase; color:var(--dir-fg); }
 .dirs-soon-list{ list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:var(--space-1); }
 @media (min-width:40em){ .dirs-soon-list{ display:flex; flex-wrap:wrap; } }
@@ -874,14 +943,14 @@ footer{ position:relative; z-index:2; background:var(--footer); color:var(--on-f
           <li><a href="/prilozheniya-pod-zadachu/">Приложения под вашу задачу</a></li>
           <li><a href="/roliki-o-kompanii/">Рекламные ролики</a></li>
           <li><a href="/obuchenie-nejrosetyam/">Обучение нейросетям</a></li>
-          <li><a href="/kartochki-dlya-marketplejsov/">Карточки для маркетплейсов<span class="menu-soon">скоро</span></a></li>
-          <li><a href="/seo-prodvizhenie-sajta/">SEO-продвижение сайта<span class="menu-soon">скоро</span></a></li>
-          <li><a href="/prodvizhenie-vkontakte/">Продвижение ВКонтакте<span class="menu-soon">скоро</span></a></li>
-          <li><a href="/avitolog/">Авитолог: продвижение на Авито<span class="menu-soon">скоро</span></a></li>
-          <li><a href="/nastrojka-yandeks-direkt/">Настройка Яндекс Директ<span class="menu-soon">скоро</span></a></li>
-          <li><a href="/ii-dlya-prodazh/">ИИ для отдела продаж<span class="menu-soon">скоро</span></a></li>
+          <li><a href="/ii-administrator/">ИИ-администратор</a></li>
+          <li><a href="/ii-dlya-prodazh/">ИИ для отдела продаж</a></li>
+          <li><a href="/seo-prodvizhenie-sajta/">SEO-продвижение сайта</a></li>
+          <li><a href="/nastrojka-yandeks-direkt/">Настройка Яндекс Директ</a></li>
+          <li><a href="/prodvizhenie-vkontakte/">Продвижение ВКонтакте</a></li>
+          <li><a href="/avitolog/">Авитолог: продвижение на Авито</a></li>
+          <li><a href="/kartochki-dlya-marketplejsov/">Карточки для маркетплейсов</a></li>
           <li><a href="/sajt-po-152-fz/">Сайт по 152-ФЗ<span class="menu-soon">скоро</span></a></li>
-          <li><a href="/ii-administrator/">ИИ-администратор<span class="menu-soon">скоро</span></a></li>
         </ul>
         <ul class="menu-more">
           <li><a href="#steps">Как работаем</a></li>
@@ -963,17 +1032,22 @@ footer{ position:relative; z-index:2; background:var(--footer); color:var(--on-f
       </div>
       <div class="hero-soon">
 <!--GEN:soon-->
+<nav class="dirs-soon" aria-label="Ещё направления">
+  <p class="dirs-soon-h" aria-hidden="true">Ещё направления</p>
+  <ul class="dirs-soon-list">
+    <li><a class="dir-soon link-press" href="/ii-administrator/">ИИ-администратор</a></li>
+    <li><a class="dir-soon link-press" href="/ii-dlya-prodazh/">ИИ для отдела продаж</a></li>
+    <li><a class="dir-soon link-press" href="/seo-prodvizhenie-sajta/">SEO-продвижение сайта</a></li>
+    <li><a class="dir-soon link-press" href="/nastrojka-yandeks-direkt/">Настройка Яндекс Директ</a></li>
+    <li><a class="dir-soon link-press" href="/prodvizhenie-vkontakte/">Продвижение ВКонтакте</a></li>
+    <li><a class="dir-soon link-press" href="/avitolog/">Авитолог: продвижение на Авито</a></li>
+    <li><a class="dir-soon link-press" href="/kartochki-dlya-marketplejsov/">Карточки для маркет­плейсов</a></li>
+  </ul>
+</nav>
 <nav class="dirs-soon" aria-label="Скоро: разделы готовятся">
   <p class="dirs-soon-h" aria-hidden="true">Скоро</p>
   <ul class="dirs-soon-list">
-    <li><a class="dir-soon link-press" href="/kartochki-dlya-marketplejsov/">Карточки для маркет­плейсов</a></li>
-    <li><a class="dir-soon link-press" href="/seo-prodvizhenie-sajta/">SEO-продвижение сайта</a></li>
-    <li><a class="dir-soon link-press" href="/prodvizhenie-vkontakte/">Продвижение ВКонтакте</a></li>
-    <li><a class="dir-soon link-press" href="/avitolog/">Авитолог: продвижение на Авито</a></li>
-    <li><a class="dir-soon link-press" href="/nastrojka-yandeks-direkt/">Настройка Яндекс Директ</a></li>
-    <li><a class="dir-soon link-press" href="/ii-dlya-prodazh/">ИИ для отдела продаж</a></li>
     <li><a class="dir-soon link-press" href="/sajt-po-152-fz/">Сайт по 152-ФЗ</a></li>
-    <li><a class="dir-soon link-press" href="/ii-administrator/">ИИ-администратор</a></li>
   </ul>
 </nav>
 <!--/GEN:soon-->
@@ -1163,7 +1237,7 @@ footer{ position:relative; z-index:2; background:var(--footer); color:var(--on-f
     <ul class="sr-only">
       <li>Подписки на нейросети</li><li>API-ключи и токены</li><li>MCP-серверы</li><li>Облачные серверы и хранилища</li>
       <li>SEO- и аналитические сервисы</li><li>Программы для дизайна, видео и автоматизации</li><li>Стоковые фото и музыка</li>
-      <li>Комиссии за оплату зарубежных сервисов</li><li>Компьютер и связь</li><li>Проезд по Самаре</li><li>Налог</li>
+      <li>Комиссии за оплату зарубежных сервисов</li><li>Компьютер и связь</li><li>Налог</li>
     </ul>
     <div class="mq" aria-hidden="true">
       <div class="mq-row">
@@ -1174,8 +1248,8 @@ footer{ position:relative; z-index:2; background:var(--footer); color:var(--on-f
       </div>
       <div class="mq-row out">
         <div class="mq-track">
-          <span>Дизайн</span><i>·</i><span>Видео</span><i>·</i><span>Автоматизация</span><i>·</i><span>Стоковые фото и музыка</span><i>·</i><span>Зарубежные сервисы</span><i>·</i><span>Компьютер и связь</span><i>·</i><span>Проезд по Самаре</span><i>·</i><span>Налог</span><i>·</i>
-          <span class="dup">Дизайн</span><i class="dup">·</i><span class="dup">Видео</span><i class="dup">·</i><span class="dup">Автоматизация</span><i class="dup">·</i><span class="dup">Стоковые фото и музыка</span><i class="dup">·</i><span class="dup">Зарубежные сервисы</span><i class="dup">·</i><span class="dup">Компьютер и связь</span><i class="dup">·</i><span class="dup">Проезд по Самаре</span><i class="dup">·</i><span class="dup">Налог</span><i class="dup">·</i>
+          <span>Дизайн</span><i>·</i><span>Видео</span><i>·</i><span>Автоматизация</span><i>·</i><span>Стоковые фото и музыка</span><i>·</i><span>Зарубежные сервисы</span><i>·</i><span>Компьютер и связь</span><i>·</i><span>Налог</span><i>·</i>
+          <span class="dup">Дизайн</span><i class="dup">·</i><span class="dup">Видео</span><i class="dup">·</i><span class="dup">Автоматизация</span><i class="dup">·</i><span class="dup">Стоковые фото и музыка</span><i class="dup">·</i><span class="dup">Зарубежные сервисы</span><i class="dup">·</i><span class="dup">Компьютер и связь</span><i class="dup">·</i><span class="dup">Налог</span><i class="dup">·</i>
         </div>
       </div>
     </div>
@@ -1270,7 +1344,7 @@ footer{ position:relative; z-index:2; background:var(--footer); color:var(--on-f
         </details>
         <details class="qa">
           <summary>Вы работаете только в Самаре?</summary>
-          <div class="ans"><p>Встречи, визиты «тайного покупателя» и съёмка&nbsp;— в Самаре и Самарской области. Всё остальное делается онлайн, поэтому работаю с бизнесом из любого города России.</p></div>
+          <div class="ans"><p>Встречи, визиты «тайного покупателя» и съёмка&nbsp;— в Самаре и Самарской области. Всё остальное делается онлайн, поэтому работаю с бизнесом по всей России, больше всего с Самарой и Москвой, и с Беларусью.</p></div>
         </details>
         <details class="qa">
           <summary>Когда будет результат?</summary>
@@ -1374,7 +1448,7 @@ footer{ position:relative; z-index:2; background:var(--footer); color:var(--on-f
       <div class="foot-who">
         <b>«Рычаг» — внедрение ИИ в бизнес, Самара</b>
         <span>Михаил Кольчугин, самозанятый (налог на профессиональный доход), ИНН&nbsp;631203164971</span>
-        <span>Работаю в Самаре и Самарской области, онлайн — по всей России</span>
+        <span>Встречи — в Самаре и области, онлайн — по всей России и в Беларуси</span>
         <span><a class="link-press" href="tel:+79024134244">+7 902 413-42-44</a> · <a class="link-press" href="https://t.me/+79024134244" target="_blank" rel="noopener">Telegram</a></span>
       </div>
       <nav aria-label="Услуги">
@@ -1390,6 +1464,13 @@ footer{ position:relative; z-index:2; background:var(--footer); color:var(--on-f
           <li><a href="/prilozheniya-pod-zadachu/">Приложения под вашу задачу</a></li>
           <li><a href="/roliki-o-kompanii/">Рекламные ролики</a></li>
           <li><a href="/obuchenie-nejrosetyam/">Обучение нейросетям</a></li>
+          <li><a href="/ii-administrator/">ИИ-администратор</a></li>
+          <li><a href="/ii-dlya-prodazh/">ИИ для отдела продаж</a></li>
+          <li><a href="/seo-prodvizhenie-sajta/">SEO-продвижение сайта</a></li>
+          <li><a href="/nastrojka-yandeks-direkt/">Настройка Яндекс Директ</a></li>
+          <li><a href="/prodvizhenie-vkontakte/">Продвижение ВКонтакте</a></li>
+          <li><a href="/avitolog/">Авитолог</a></li>
+          <li><a href="/kartochki-dlya-marketplejsov/">Карточки для маркетплейсов</a></li>
         </ul>
       </nav>
       <nav aria-label="Ещё">

@@ -46,10 +46,12 @@ ym(113741193,"init",{ssr:true,webvisor:true,clickmap:true,referrer:document.refe
    "provider": {
     "@id": "https://rychagai.ru/#org"
    },
-   "areaServed": {
-    "@type": "City",
-    "name": "Самара"
-   },
+   "areaServed": [
+    {
+     "@type": "Country",
+     "name": "Россия"
+    }
+   ],
    "offers": {
     "@type": "Offer",
     "priceCurrency": "RUB",
@@ -170,14 +172,14 @@ ym(113741193,"init",{ssr:true,webvisor:true,clickmap:true,referrer:document.refe
           <li><a href="/prilozheniya-pod-zadachu/">Приложения под вашу задачу</a></li>
           <li><a href="/roliki-o-kompanii/">Рекламные ролики</a></li>
           <li><a href="/obuchenie-nejrosetyam/">Обучение нейросетям</a></li>
-          <li><a href="/kartochki-dlya-marketplejsov/">Карточки для маркетплейсов<span class="menu-soon">скоро</span></a></li>
-          <li><a href="/seo-prodvizhenie-sajta/">SEO-продвижение сайта<span class="menu-soon">скоро</span></a></li>
-          <li><a href="/prodvizhenie-vkontakte/">Продвижение ВКонтакте<span class="menu-soon">скоро</span></a></li>
-          <li><a href="/avitolog/">Авитолог: продвижение на Авито<span class="menu-soon">скоро</span></a></li>
-          <li><a href="/nastrojka-yandeks-direkt/">Настройка Яндекс Директ<span class="menu-soon">скоро</span></a></li>
-          <li><a href="/ii-dlya-prodazh/">ИИ для отдела продаж<span class="menu-soon">скоро</span></a></li>
+          <li><a href="/ii-administrator/">ИИ-администратор</a></li>
+          <li><a href="/ii-dlya-prodazh/">ИИ для отдела продаж</a></li>
+          <li><a href="/seo-prodvizhenie-sajta/">SEO-продвижение сайта</a></li>
+          <li><a href="/nastrojka-yandeks-direkt/">Настройка Яндекс Директ</a></li>
+          <li><a href="/prodvizhenie-vkontakte/">Продвижение ВКонтакте</a></li>
+          <li><a href="/avitolog/">Авитолог: продвижение на Авито</a></li>
+          <li><a href="/kartochki-dlya-marketplejsov/">Карточки для маркетплейсов</a></li>
           <li><a href="/sajt-po-152-fz/">Сайт по 152-ФЗ<span class="menu-soon">скоро</span></a></li>
-          <li><a href="/ii-administrator/">ИИ-администратор<span class="menu-soon">скоро</span></a></li>
         </ul>
         <ul class="menu-more">
           <li><a href="/#steps">Как работаем</a></li>
@@ -332,17 +334,22 @@ ym(113741193,"init",{ssr:true,webvisor:true,clickmap:true,referrer:document.refe
   io.observe(d);
 })();
 </script>
+<nav class="dirs-soon" aria-label="Ещё направления">
+  <p class="dirs-soon-h" aria-hidden="true">Ещё направления</p>
+  <ul class="dirs-soon-list">
+    <li><a class="dir-soon link-press" href="/ii-administrator/">ИИ-администратор</a></li>
+    <li><a class="dir-soon link-press" href="/ii-dlya-prodazh/">ИИ для отдела продаж</a></li>
+    <li><a class="dir-soon link-press" href="/seo-prodvizhenie-sajta/">SEO-продвижение сайта</a></li>
+    <li><a class="dir-soon link-press" href="/nastrojka-yandeks-direkt/">Настройка Яндекс Директ</a></li>
+    <li><a class="dir-soon link-press" href="/prodvizhenie-vkontakte/">Продвижение ВКонтакте</a></li>
+    <li><a class="dir-soon link-press" href="/avitolog/">Авитолог: продвижение на Авито</a></li>
+    <li><a class="dir-soon link-press" href="/kartochki-dlya-marketplejsov/">Карточки для маркет­плейсов</a></li>
+  </ul>
+</nav>
 <nav class="dirs-soon" aria-label="Скоро: разделы готовятся">
   <p class="dirs-soon-h" aria-hidden="true">Скоро</p>
   <ul class="dirs-soon-list">
-    <li><a class="dir-soon link-press" href="/kartochki-dlya-marketplejsov/">Карточки для маркет­плейсов</a></li>
-    <li><a class="dir-soon link-press" href="/seo-prodvizhenie-sajta/">SEO-продвижение сайта</a></li>
-    <li><a class="dir-soon link-press" href="/prodvizhenie-vkontakte/">Продвижение ВКонтакте</a></li>
-    <li><a class="dir-soon link-press" href="/avitolog/">Авитолог: продвижение на Авито</a></li>
-    <li><a class="dir-soon link-press" href="/nastrojka-yandeks-direkt/">Настройка Яндекс Директ</a></li>
-    <li><a class="dir-soon link-press" href="/ii-dlya-prodazh/">ИИ для отдела продаж</a></li>
     <li><a class="dir-soon link-press" href="/sajt-po-152-fz/">Сайт по 152-ФЗ</a></li>
-    <li><a class="dir-soon link-press" href="/ii-administrator/">ИИ-администратор</a></li>
   </ul>
 </nav>
   </div>
@@ -352,7 +359,7 @@ ym(113741193,"init",{ssr:true,webvisor:true,clickmap:true,referrer:document.refe
   <div class="wrap call-in">
     <div>
       <h2 id="call-h">Расскажите о своём деле&nbsp;— подскажу, с чего начать</h2>
-      <p class="lead">Позвоните или напишите в Telegram или СМС. Первый разговор бесплатный: разберём задачу и прикинем, сколько часов она займёт.</p>
+      <p class="lead">Позвоните или напишите в Telegram или СМС. Первый разговор бесплатный: разберём задачу, и я скажу, с чего начать и сколько это будет стоить.</p>
     </div>
     <div class="call-side">
       <p><a class="call-phone link-press" href="tel:+79024134244">+7 902 413-42-44</a></p>
@@ -373,7 +380,7 @@ ym(113741193,"init",{ssr:true,webvisor:true,clickmap:true,referrer:document.refe
       <div class="foot-who">
         <b>«Рычаг» — внедрение ИИ в бизнес, Самара</b>
         <span>Михаил Кольчугин, самозанятый (налог на профессиональный доход), ИНН&nbsp;631203164971</span>
-        <span>Работаю в Самаре и Самарской области, онлайн — по всей России</span>
+        <span>Встречи — в Самаре и области, онлайн — по всей России и в Беларуси</span>
         <span><a class="link-press" href="tel:+79024134244">+7 902 413-42-44</a> · <a class="link-press" href="https://t.me/+79024134244" target="_blank" rel="noopener">Telegram</a></span>
       </div>
       <nav aria-label="Услуги">
@@ -389,6 +396,13 @@ ym(113741193,"init",{ssr:true,webvisor:true,clickmap:true,referrer:document.refe
           <li><a href="/prilozheniya-pod-zadachu/">Приложения под вашу задачу</a></li>
           <li><a href="/roliki-o-kompanii/">Рекламные ролики</a></li>
           <li><a href="/obuchenie-nejrosetyam/">Обучение нейросетям</a></li>
+          <li><a href="/ii-administrator/">ИИ-администратор</a></li>
+          <li><a href="/ii-dlya-prodazh/">ИИ для отдела продаж</a></li>
+          <li><a href="/seo-prodvizhenie-sajta/">SEO-продвижение сайта</a></li>
+          <li><a href="/nastrojka-yandeks-direkt/">Настройка Яндекс Директ</a></li>
+          <li><a href="/prodvizhenie-vkontakte/">Продвижение ВКонтакте</a></li>
+          <li><a href="/avitolog/">Авитолог</a></li>
+          <li><a href="/kartochki-dlya-marketplejsov/">Карточки для маркетплейсов</a></li>
         </ul>
       </nav>
       <nav aria-label="Ещё">
